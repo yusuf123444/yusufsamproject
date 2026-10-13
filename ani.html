@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head>
+<body>
+    
+<!-- ============== CRAVECRAFT CINEMATIC INTRO ============== -->
+<style>
+#ccx{position:fixed;inset:0;z-index:999999;overflow:hidden;background:#08090c;color:white;font-family:Arial,sans-serif;isolation:isolate}
+#ccx *{box-sizing:border-box}
+#ccx .scene{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .8s; background:#17171b}
+#ccx .scene.active{opacity:1;visibility:visible}
+#ccx .world{position:absolute;inset:0;overflow:hidden;animation:none}
+#ccx .scene.active .world{animation:ccCamera 7s ease-in-out both}
+@keyframes ccCamera{from{transform:scale(1.02)}to{transform:scale(1.12) translate(-1%,-1%)}}
+#ccx .vignette{position:absolute;inset:0;z-index:40;pointer-events:none;background:linear-gradient(0deg,#0009,transparent 35%),radial-gradient(ellipse,transparent 35%,#0009)}
+#ccx .grain{position:absolute;inset:0;z-index:45;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+#ccx .tag{color:#ff963d;font-size:11px;letter-spacing:4px;font-weight:bold;margin-bottom:18px}
+#ccx h1{font-size:clamp(42px,8vw,94px);line-height:.95;letter-spacing:-3px;margin:0;font-weight:900}
+#ccx .orange{color:#ff892d}
+#ccx .sub{font-size:14px;line-height:1.8;color:#ddd;margin-top:18px}
+#ccx .copy{position:absolute;z-index:25;left:7%;top:12%;max-width:700px}
+#ccx .center{position:absolute;z-index:25;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
+
+/* Город */
+#ccx .city{background:linear-gradient(#222d3c,#c18b68 56%,#343036)}
+#ccx .sun{position:absolute;width:50vw;height:50vw;max-height:65vh;max-width:65vh;border-radius:50%;background:#ffb66b55;filter:blur(55px);right:0;top:0}
+#ccx .building{position:absolute;bottom:35%;background:linear-gradient(90deg,#242832,#49444a,#252934);border:1px solid #ffffff15;box-shadow:inset -15px 0 20px #0004}
+#ccx .building:after{content:"";position:absolute;inset:10px;background:repeating-linear-gradient(0deg,transparent 0 24px,#ffd59a35 25px 28px),repeating-linear-gradient(90deg,transparent 0 20px,#ffd59a35 21px 24px)}
+#ccx .b1{left:0;width:24%;height:45%}#ccx .b2{left:23%;width:21%;height:36%}#ccx .b3{right:0;width:28%;height:52%}#ccx .b4{right:26%;width:18%;height:34%}
+#ccx .road{position:absolute;bottom:0;left:-15%;width:130%;height:45%;background:linear-gradient(#6b6260,#222127);clip-path:polygon(35% 0,65% 0,100% 100%,0 100%)}
+#ccx .sidewalk{position:absolute;bottom:0;width:100%;height:19%;background:linear-gradient(#aaa09a,#59545a)}
+#ccx .car{position:absolute;bottom:18%;left:-30%;width:120px;height:35px;border-radius:9px;background:linear-gradient(#82909a,#30343b);animation:ccDrive 5s linear infinite}
+#ccx .car:before{content:"";position:absolute;top:-18px;left:25px;width:65px;height:23px;background:#65717c;border-radius:12px 12px 0 0}
+#ccx .car:after{content:"";position:absolute;right:0;top:10px;width:7px;height:8px;background:#ff453c;box-shadow:-100px 0 #ff453c}
+#ccx .car.c2{bottom:29%;transform:scale(.65);animation-duration:7s;animation-delay:-3s}
+@keyframes ccDrive{to{left:120%}}
+#ccx .walker{position:absolute;left:44%;bottom:10%;width:65px;height:180px;animation:ccWalk .5s infinite alternate;transform-origin:bottom}
+#ccx .walker .head{position:absolute;top:0;left:19px;width:30px;height:34px;border-radius:50%;background:#bd8969}
+#ccx .walker .hair{position:absolute;top:-3px;left:17px;width:34px;height:15px;border-radius:50% 50% 10% 10%;background:#241c19}
+#ccx .walker .body{position:absolute;top:34px;left:9px;width:50px;height:72px;border-radius:12px;background:#202633}
+#ccx .walker .arm{position:absolute;top:43px;left:4px;width:13px;height:65px;border-radius:12px;background:#bd8969;transform:rotate(10deg)}
+#ccx .walker .arm.right{left:49px;transform:rotate(-15deg)}
+#ccx .walker .legs{position:absolute;top:102px;left:12px;width:42px;height:65px;background:linear-gradient(90deg,#20232b 0 43%,transparent 44% 55%,#20232b 56%)}
+@keyframes ccWalk{to{transform:translateY(4px) rotate(2deg)}}
+#ccx .phone-hand{position:absolute;z-index:30;right:8%;bottom:-13%;width:clamp(135px,23vw,255px);height:clamp(260px,48vw,460px);transform:rotate(-7deg);animation:ccPhone 3s ease-in-out infinite alternate}
+@keyframes ccPhone{to{transform:rotate(-4deg) translateY(-12px)}}
+#ccx .phone{position:absolute;inset:0;padding:8px;border:2px solid #777;border-radius:30px;background:linear-gradient(120deg,#777,#171719 25%,#333 80%,#111);box-shadow:-15px 25px 60px #000a}
+#ccx .phone-screen{height:100%;padding:20px 12px;border-radius:23px;background:linear-gradient(150deg,#51413c,#151519 60%,#080808);overflow:hidden}
+#ccx .reel{height:65%;margin-top:18px;border-radius:12px;background:radial-gradient(ellipse at 50% 25%,#e7b18b 0 10%,transparent 11%),linear-gradient(140deg,#242b36,#9b6245,#15151a);display:flex;align-items:flex-end;padding:10px;font-weight:bold}
+#ccx .reel:after{content:"▶ REELS";font-size:12px}
+#ccx .reel-line{height:4px;margin-top:12px;background:#ffffff35;border-radius:5px}
+
+/* Кафе и толпа */
+#ccx .cafe{background:linear-gradient(#303948,#796052 58%,#17171a)}
+#ccx .cafe-building{position:absolute;inset:8% 5% 0;background:linear-gradient(#222126,#090a0c);border:8px solid #252326;box-shadow:0 0 90px #ff852a25}
+#ccx .cafe-sign{position:absolute;top:8%;left:8%;right:8%;z-index:2;text-align:center;padding:15px 4px;background:#080809;border:1px solid #ff892d88;box-shadow:0 0 35px #ff892d40;font-size:clamp(25px,5vw,60px);font-weight:900;letter-spacing:2px}
+#ccx .cafe-glass{position:absolute;top:31%;left:8%;right:8%;bottom:0;border:5px solid #171719;background:linear-gradient(115deg,#c4a17d35,#141c27 60%,#d7894235)}
+#ccx .cafe-door{position:absolute;left:40%;bottom:0;width:20%;height:70%;background:linear-gradient(90deg,#101115,#c6a27b35,#101115);border:3px solid #29282a;transform-origin:left;transition:transform 1.5s}
+#ccx .cafe.active .cafe-door{transform:perspective(600px) rotateY(-45deg)}
+#ccx .crowd{position:absolute;inset:0;z-index:20;pointer-events:none}
+#ccx .crowd-person{position:absolute;bottom:0;width:clamp(55px,9vw,110px);height:clamp(190px,38vh,330px);transform-origin:bottom;animation:ccCrowd 1s ease-in-out infinite alternate;filter:drop-shadow(0 5px 5px #0006)}
+#ccx .crowd-person .head{position:absolute;top:0;left:24%;width:52%;height:24%;border-radius:45%;background:var(--skin);box-shadow:inset -6px -3px #0002}
+#ccx .crowd-person .hair{position:absolute;z-index:2;top:-2%;left:20%;width:60%;height:11%;border-radius:50% 50% 15% 15%;background:var(--hair)}
+#ccx .crowd-person .eyes{position:absolute;z-index:3;top:12%;left:36%;width:30%;height:4px;background:#39251e}
+#ccx .crowd-person .neck{position:absolute;top:20%;left:40%;width:20%;height:9%;background:var(--skin)}
+#ccx .crowd-person .torso{position:absolute;top:25%;left:8%;width:84%;height:42%;border-radius:20% 20% 8% 8%;background:linear-gradient(90deg,#0004,transparent 45%,#fff2),var(--shirt)}
+#ccx .crowd-person .arm{position:absolute;top:28%;left:0;width:22%;height:38%;border-radius:20px;background:var(--skin);transform:rotate(15deg);transform-origin:top}
+#ccx .crowd-person .arm.r{left:78%;transform:rotate(-15deg)}
+#ccx .crowd-person .pants{position:absolute;top:64%;left:18%;width:64%;height:30%;background:linear-gradient(90deg,var(--trousers) 0 43%,transparent 44% 55%,var(--trousers) 56%)}
+#ccx .crowd-person .shoes{position:absolute;bottom:0;left:10%;width:85%;height:7%;border-radius:8px;background:#171719}
+@keyframes ccCrowd{from{transform:translateX(-4px) rotate(-2deg)}to{transform:translateX(5px) rotate(2deg)}}
+
+/* Переход времени */
+#ccx .time-scene{background:#000}
+#ccx .time-scene h2{font-size:clamp(35px,7vw,80px);line-height:1.1;animation:ccTime 2s ease both}
+@keyframes ccTime{from{opacity:0;filter:blur(12px);transform:scale(1.12)}to{opacity:1;filter:blur(0);transform:scale(1)}}
+
+/* Ресторан */
+#ccx .interior{background:linear-gradient(#25242a,#63432f 62%,#211b1a)}
+#ccx .ceiling{position:absolute;inset:0 0 43%;background:linear-gradient(#17181e,#594037)}
+#ccx .lamp{position:absolute;top:4%;left:18%;width:130px;height:140px;border-radius:50%;background:radial-gradient(ellipse,#ffbd7140,#ffbd7100 70%)}
+#ccx .lamp.l2{left:72%;top:3%}
+#ccx .back-counter{position:absolute;left:4%;right:4%;top:27%;height:28%;border:5px solid #211b1b;background:linear-gradient(#30272a,#090a0c);box-shadow:0 20px 40px #0008}
+#ccx .counter-top{position:absolute;top:52%;left:0;right:0;height:8%;background:#d9a16b}
+#ccx .floor{position:absolute;bottom:-10%;left:-20%;width:140%;height:52%;background:repeating-linear-gradient(90deg,#393137 0 2px,#5c4641 3px 100px);clip-path:polygon(10% 0,90% 0,100% 100%,0 100%)}
+#ccx .order-board{position:absolute;z-index:5;top:7%;left:50%;transform:translateX(-50%);width:min(430px,75%);padding:12px;background:#101417;border:2px solid #4c4e50;box-shadow:0 0 30px #000}
+#ccx .board-heading{text-align:center;color:#ff9c42;letter-spacing:3px;font-size:11px;margin-bottom:10px}
+#ccx .board-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#ccx .board-col{background:#1b2327;padding:8px;font-size:10px}
+#ccx .board-col b{display:block;margin-bottom:8px}
+#ccx .board-col span{display:block;padding:5px 0;border-bottom:1px solid #ffffff17}
+#ccx .green{color:#83e4a2}#ccx .yellow{color:#ffbe67}
+#ccx .customer{position:absolute;bottom:25%;width:45px;height:100px;animation:ccWalk .8s ease-in-out infinite alternate}
+#ccx .customer:before{content:"";position:absolute;top:0;left:11px;width:24px;height:25px;border-radius:50%;background:var(--skin,#bb8b70)}
+#ccx .customer:after{content:"";position:absolute;top:25px;width:45px;height:55px;border-radius:10px;background:var(--shirt,#3c4851);box-shadow:0 48px 0 -12px #19191d}
+#ccx .p1{left:10%;--shirt:#7a4935}#ccx .p2{left:25%;bottom:27%;--shirt:#4c6475}#ccx .p3{right:25%;--shirt:#6a5042}#ccx .p4{right:9%;bottom:27%;--shirt:#343b48}
+
+/* Кассирша: добавляется непосредственно в interior */
+#ccx .cc-cashier{position:absolute;z-index:35;right:7%;bottom:4%;width:clamp(185px,27vw,300px);height:68%;pointer-events:none}
+#ccx .cc-cashier .body{position:absolute;bottom:12%;left:20%;width:60%;height:46%;border-radius:40% 40% 5% 5%;background:linear-gradient(90deg,#171717,#383838 50%,#171717);transform:translateY(190px);opacity:0}
+#ccx .cc-cashier .apron{position:absolute;left:20%;top:8%;width:60%;height:85%;border-radius:10px 10px 0 0;border-top:8px solid #ed762b;background:#f4eee5}
+#ccx .cc-cashier .neck{position:absolute;z-index:2;left:42%;bottom:49%;width:16%;height:12%;background:#dba17e;transform:translateY(150px);opacity:0}
+#ccx .cc-cashier .head{position:absolute;z-index:4;left:27%;bottom:53%;width:46%;height:26%;border-radius:45% 45% 43% 43%;background:linear-gradient(90deg,#bf8060,#edbd98 50%,#cb8d6c);box-shadow:inset -7px -4px #0002;transform:translateY(190px);opacity:0}
+#ccx .cc-cashier .hair{position:absolute;top:-7%;left:-4%;width:108%;height:44%;border-radius:55% 55% 18% 18%;background:#332019}
+#ccx .cc-cashier .hat{position:absolute;top:-20%;left:10%;width:80%;height:30%;border-radius:50% 50% 8% 8%;background:#fff9ef;border-bottom:7px solid #ed762b}
+#ccx .cc-cashier .eyes{position:absolute;top:45%;left:22%;width:56%;height:5px;background:linear-gradient(90deg,#302019 0 18%,transparent 20% 78%,#302019 80%)}
+#ccx .cc-cashier .mouth{position:absolute;top:70%;left:40%;width:20%;height:8px;border-radius:0 0 12px 12px;background:#873d3b}
+#ccx .cc-cashier .arm{position:absolute;z-index:5;top:44%;width:15%;height:27%;border-radius:20px;background:#dba17e}
+#ccx .cc-cashier .arm.left{left:12%;transform:rotate(18deg)}
+#ccx .cc-cashier .arm.right{right:12%;transform:rotate(-18deg)}
+#ccx .cc-cashier .counter{position:absolute;z-index:8;bottom:6%;left:-10%;width:120%;height:24%;border-top:10px solid #ff8b2d;border-radius:10px 10px 0 0;background:linear-gradient(90deg,#24170f,#69432e,#24170f);box-shadow:0 -8px 30px #0007;display:flex;align-items:center;justify-content:center;color:white;font-weight:900;letter-spacing:3px;font-size:12px}
+#ccx .cc-cashier .dialogue{position:absolute;z-index:12;bottom:83%;left:50%;width:max-content;max-width:90vw;padding:16px 20px;background:#fff;color:#171717;border-radius:18px 18px 18px 4px;box-shadow:0 8px 30px #0008;font-size:clamp(14px,2vw,21px);font-weight:800;text-align:center;opacity:0;transform:translate(-50%,15px)}
+#ccx .cc-cashier .dialogue small{display:block;margin-top:5px;color:#777;font-size:10px;font-weight:500}
+#ccx .cc-cashier.rising .head{animation:ccRise 1s .2s ease-out forwards}
+#ccx .cc-cashier.rising .neck{animation:ccRise 1s .1s ease-out forwards}
+#ccx .cc-cashier.rising .body{animation:ccRise 1s ease-out forwards}
+#ccx .cc-cashier.rising .dialogue{animation:ccSay .5s 1.5s ease-out forwards}
+#ccx .cc-cashier.rising .mouth{animation:ccTalk .2s infinite alternate}
+@keyframes ccRise{to{transform:translateY(0);opacity:1}}
+@keyframes ccSay{to{opacity:1;transform:translate(-50%,0)}}
+@keyframes ccTalk{to{transform:scaleY(1.3)}}
+
+/* Еда */
+#ccx .food-scene{background:radial-gradient(ellipse,#46352d,#100f11 75%)}
+#ccx .tray{position:relative;width:min(400px,85vw);margin:25px auto 0;padding:20px;border-radius:22px;background:linear-gradient(135deg,#f5f0e6,#cfc8bb);color:#181818;box-shadow:0 30px 100px #000a;animation:ccTray 2.5s ease-in-out infinite alternate}
+@keyframes ccTray{to{transform:translateY(-7px) rotateX(5deg)}}
+#ccx .food-items{height:135px;position:relative}
+#ccx .burger{position:absolute;left:50%;top:5px;transform:translateX(-50%);width:175px;height:120px;filter:drop-shadow(0 10px 8px #0004)}
+#ccx .bun{position:absolute;left:7px;width:160px;background:linear-gradient(#f7cb78,#bb6c28);border-bottom:5px solid #8e481c}
+#ccx .bun.top{top:0;height:55px;border-radius:90px 90px 30px 30px}
+#ccx .bun.bottom{top:82px;height:30px;border-radius:12px 12px 40px 40px}
+#ccx .sesame{position:absolute;left:35px;top:14px;width:5px;height:10px;border-radius:50%;background:#fff0ba;box-shadow:20px 12px #fff0ba,43px -2px #fff0ba,65px 15px #fff0ba,87px 0 #fff0ba}
+#ccx .patty{position:absolute;top:57px;left:3px;width:169px;height:28px;border-radius:12px;background:repeating-linear-gradient(0deg,#542819,#75391e 4px,#3a201a 7px)}
+#ccx .cheese{position:absolute;top:75px;left:5px;width:165px;height:12px;background:#ffc637}
+#ccx .lettuce{position:absolute;top:51px;left:5px;width:165px;height:12px;border-radius:50%;background:#5a963c}
+#ccx .fries{position:absolute;left:5%;top:22px;width:80px;height:70px}
+#ccx .fries span{position:absolute;bottom:0;left:10px;width:13px;height:65px;border-radius:4px;background:linear-gradient(90deg,#d68b20,#ffdf73,#dc962a);transform:rotate(-12deg)}
+#ccx .fries span:nth-child(2){left:27px;height:73px;transform:rotate(5deg)}
+#ccx .fries span:nth-child(3){left:43px;height:59px;transform:rotate(14deg)}
+#ccx .drink{position:absolute;right:8%;top:28px;width:43px;height:80px;border-radius:5px 5px 12px 12px;background:linear-gradient(90deg,#d6d6d6,#fff,#b7b7b7);border-top:8px solid #aaa}
+#ccx .drink:after{content:"";position:absolute;top:-30px;left:21px;height:35px;width:5px;background:#ff8b2d;transform:rotate(8deg)}
+
+/* Сон */
+#ccx .sleep-scene{background:radial-gradient(ellipse,#40332d,#050506 75%)}
+#ccx .sofa{position:absolute;bottom:8%;left:10%;right:10%;height:36%;border-radius:40px 40px 12px 12px;background:linear-gradient(#67493b,#322620);border:5px solid #6b4c3b}
+#ccx .sleep-person{position:absolute;z-index:5;bottom:29%;left:40%;width:150px;height:120px;transform:rotate(13deg)}
+#ccx .sleep-person:before{content:"";position:absolute;left:0;top:15px;width:62px;height:58px;border-radius:50%;background:#bb8b70}
+#ccx .sleep-person:after{content:"";position:absolute;left:47px;top:44px;width:105px;height:65px;border-radius:22px;background:#232a33}
+#ccx .zzz{position:absolute;top:18%;left:60%;font-size:30px;animation:ccZzz 2s infinite}
+@keyframes ccZzz{0%{opacity:0;transform:translateY(15px)}40%{opacity:1}100%{opacity:0;transform:translateY(-25px)}}
+
+/* Элементы управления */
+#ccx .controls{position:absolute;z-index:60;right:15px;bottom:15px;display:flex;gap:8px}
+#ccx .control{border:1px solid #ffffff60;border-radius:30px;color:white;background:#090909c9;padding:11px 15px;cursor:pointer;font-size:12px}
+#ccx .control:hover{background:#ff892d;color:#111}
+#ccx .progress{position:absolute;z-index:60;left:0;bottom:0;height:3px;width:0;background:#ff892d;box-shadow:0 0 14px #ff892d}
+#ccx .fade{position:absolute;z-index:70;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity 1.5s}
+#ccx .fade.on{opacity:1}
+#ccx .start-screen{position:absolute;z-index:80;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px;background:radial-gradient(ellipse,#29221f,#050506 70%);transition:opacity .6s}
+#ccx .start-screen h2{font-size:clamp(38px,8vw,80px);letter-spacing:-3px;margin:0}
+#ccx .start-screen p{color:#aaa;font-size:13px;line-height:1.8;margin:18px 0}
+#ccx .start-screen button{padding:15px 26px;border:0;border-radius:40px;background:#ff892d;color:#151515;font-weight:900;cursor:pointer}
+#ccx .hidden{opacity:0;pointer-events:none}
+@media(max-width:600px){#ccx .copy{left:5%;top:8%}#ccx .copy h1{font-size:47px}#ccx .phone-hand{right:2%;width:125px;height:250px}#ccx .cafe-building{left:1%;right:1%}#ccx .cafe-sign{font-size:24px}#ccx .order-board{width:86%}#ccx .cc-cashier{right:0;width:175px;height:58%}#ccx .controls{right:6px;bottom:10px}#ccx .sleep-person{left:29%;transform:scale(.8) rotate(13deg)}}
+</style>
+
+<div id="ccx">
+  <section class="scene city active" data-time="6500">
+    <div class="world">
+      <div class="sun"></div>
+      <div class="building b1"></div><div class="building b2"></div><div class="building b3"></div><div class="building b4"></div>
+      <div class="road"></div><div class="sidewalk"></div>
+      <div class="car"></div><div class="car c2"></div>
+      <div class="walker"><div class="head"></div><div class="hair"></div><div class="body"></div><div class="arm"></div><div class="arm right"></div><div class="legs"></div></div>
+    </div>
+    <div class="copy"><div class="tag">TASHKENT · 18:42</div><h1>JUST<br><span class="orange">ANOTHER</span><br>DAY.</h1><p class="sub">Ты идёшь по городу.<br>Машины шумят. Ты смотришь Reels.</p></div>
+    <div class="phone-hand"><div class="phone"><div class="phone-screen"><b>◉ Reels</b><div class="reel"></div><div style="font-size:11px;margin-top:10px">@daily.moments · ♡ 24.8K</div><div class="reel-line"></div><div class="reel-line" style="width:60%"></div></div></div></div>
+    <div class="vignette"></div>
+  </section>
+
+  <section class="scene cafe" data-time="6500">
+    <div class="world">
+      <div class="sun" style="top:0;right:10%"></div>
+      <div class="cafe-building"><div class="cafe-sign">CRAVE<span class="orange">CRAFT</span></div><div class="cafe-glass"></div><div class="cafe-door"></div></div>
+    </div>
+    <div class="crowd" id="ccCrowd"></div>
+    <div class="center" style="z-index:25;pointer-events:none">
+      <div class="tag">SOMETHING DIFFERENT</div><h1 style="font-size:clamp(35px,6vw,72px)">CRAVE<span class="orange">CRAFT</span></h1>
+      <p class="sub">Ты замечаешь кафе.<br>У входа собралась огромная очередь!</p>
+    </div>
+    <div class="vignette"></div>
+  </section>
+
+  <section class="scene time-scene" data-time="3200">
+    <div class="center"><div class="tag">TIME FLIES</div><h2>ВРЕМЯ<br><span class="orange">СПУСТЯ...</span></h2></div>
+  </section>
+
+  <section class="scene interior" data-time="8500">
+    <div class="world">
+      <div class="ceiling"></div><div class="lamp"></div><div class="lamp l2"></div>
+      <div class="back-counter"></div><div class="counter-top"></div>
+      <div class="order-board"><div class="board-heading">CRAVECRAFT · ORDERS</div><div class="board-grid">
+        <div class="board-col"><b class="green">● ГОТОВЫ</b><span>#024 — Заберите</span><span>#025 — Заберите</span><span>#026 — Заберите</span></div>
+        <div class="board-col"><b class="yellow">● ГОТОВЯТСЯ</b><span>#027 — Готовится</span><span>#028 — Готовится</span><span>#029 — Готовится</span></div>
+      </div></div>
+      <div class="customer p1"></div><div class="customer p2"></div><div class="customer p3"></div><div class="customer p4"></div>
+      <div class="floor"></div>
+    </div>
+    <div class="copy" style="top:auto;bottom:12%;left:5%;max-width:55%">
+      <div class="tag">WELCOME TO THE FUTURE</div>
+      <h1 style="font-size:clamp(28px,5vw,58px)">WELCOME<br>TO <span class="orange">CRAVECRAFT</span></h1>
+      <p class="sub">Ты проходишь мимо посетителей и подходишь к кассе...</p>
+    </div>
+    <div class="vignette"></div>
+  </section>
+
+  <section class="scene food-scene" data-time="6500">
+    <div class="center">
+      <div class="tag">ORDER #030 · READY</div><h1>THE <span class="orange">CLASSIC</span></h1>
+      <div class="tray"><div class="food-items">
+        <div class="burger"><div class="bun top"><div class="sesame"></div></div><div class="lettuce"></div><div class="patty"></div><div class="cheese"></div><div class="bun bottom"></div></div>
+        <div class="fries"><span></span><span></span><span></span></div><div class="drink"></div>
+      </div><div style="font-size:24px;font-weight:900;margin-top:10px">СЕТ «КЛАССИК»</div><div style="font-size:12px;margin-top:7px">Бургер · Картофель · Напиток</div></div>
+      <p class="sub">Ты забираешь заказ и идёшь к дивану.</p>
+    </div><div class="vignette"></div>
+  </section>
+
+  <section class="scene sleep-scene" data-time="5500">
+    <div class="sofa"></div><div class="sleep-person"></div><div class="zzz">Z<br>z<span style="font-size:16px">z</span></div>
+    <div class="center"><div class="tag">AFTER A LONG DAY</div><h1 style="font-size:clamp(28px,6vw,65px)">JUST FIVE<br><span class="orange">MORE MINUTES...</span></h1><p class="sub">Ты устраиваешься на диване.<br>Глаза постепенно закрываются...</p></div>
+    <div class="vignette"></div>
+  </section>
+
+  <div class="fade" id="ccxFade"></div><div class="progress" id="ccxProgress"></div>
+  <div class="controls"><button class="control" id="ccxSound">♫ Звук: выкл.</button><button class="control" id="ccxSkip">Пропустить ↗</button></div>
+  <div class="start-screen" id="ccxStart"><div class="tag">A CRAVECRAFT EXPERIENCE</div><h2>CRAVE<span class="orange">CRAFT</span></h2><p>Надень наушники.<br>История начинается прямо сейчас.</p><button id="ccxStartButton">НАЧАТЬ ПУТЕШЕСТВИЕ ↗</button></div>
+  <div class="grain"></div>
+</div>
+
+<script>
+(() => {
+  const root = document.getElementById("ccx");
+  if (!root || root.dataset.initialized) return;
+  root.dataset.initialized = "1";
+
+  const scenes = [...root.querySelectorAll(".scene")];
+  const startScreen = root.querySelector("#ccxStart");
+  const startButton = root.querySelector("#ccxStartButton");
+  const fade = root.querySelector("#ccxFade");
+  const progress = root.querySelector("#ccxProgress");
+  const soundButton = root.querySelector("#ccxSound");
+  const skipButton = root.querySelector("#ccxSkip");
+
+  let current = 0, timer = null, frame = null;
+  let started = false, finished = false;
+  let audio = null, master = null;
+
+  // Создаём толпу прямо в сцене кафе.
+  const crowd = root.querySelector("#ccCrowd");
+  const people = [
+    ["#e7b28b","#30201a","#e45c24","#263348"],
+    ["#c78d68","#211812","#253b70","#252525"],
+    ["#edc19e","#53382b","#477a51","#383838"],
+    ["#9c6548","#241916","#b79b3b","#292b35"],
+    ["#d7a17e","#36251c","#f1eee7","#444"],
+    ["#b77b58","#17120f","#7a3840","#292929"],
+    ["#f0c39e","#6b4532","#344a50","#252525"],
+    ["#c38a66","#201815","#db8b42","#3b3430"],
+    ["#e4b18c","#38221b","#546b9a","#242424"],
+    ["#bd896a","#211813","#aa5532","#333"],
+    ["#e8b58f","#423027","#536a85","#292929"]
+  ];
+
+  people.forEach((p, i) => {
+    const person = document.createElement("div");
+    person.className = "crowd-person";
+    person.style.left = (i * 9 + (i % 2 ? 1 : 0)) + "%";
+    person.style.zIndex = i > 6 ? 12 : 3;
+    person.style.animationDelay = (-i * .21) + "s";
+    person.style.setProperty("--skin", p[0]);
+    person.style.setProperty("--hair", p[1]);
+    person.style.setProperty("--shirt", p[2]);
+    person.style.setProperty("--trousers", p[3]);
+    person.innerHTML = `
+      <div class="hair"></div><div class="head"></div><div class="eyes"></div>
+      <div class="neck"></div><div class="arm"></div><div class="arm r"></div>
+      <div class="torso"></div><div class="pants"></div><div class="shoes"></div>`;
+    crowd.appendChild(person);
+  });
+
+  // Кассирша встроена в реальную сцену .interior.
+  const interior = root.querySelector(".scene.interior");
+  const cashier = document.createElement("div");
+  cashier.className = "cc-cashier";
+  cashier.innerHTML = `
+    <div class="dialogue">Здрасте! Чего-нибудь хотите?<small>КАССИРША CRAVECRAFT</small></div>
+    <div class="body"><div class="apron"></div></div>
+    <div class="neck"></div>
+    <div class="head"><div class="hair"></div><div class="hat"></div><div class="eyes"></div><div class="mouth"></div></div>
+    <div class="arm left"></div><div class="arm right"></div>
+    <div class="counter">CRAVECRAFT</div>`;
+  interior.appendChild(cashier);
+
+  let greeted = false;
+  function greetCashier() {
+    if (greeted) return;
+    greeted = true;
+    cashier.classList.add("rising");
+
+    // Озвучка реплики, если браузер поддерживает синтез речи.
+    // Реплика также остаётся видимой на экране.
+    setTimeout(() => {
+      if (!interior.classList.contains("active")) return;
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+        const speech = new SpeechSynthesisUtterance(
+          "Здрасте! Чего-нибудь хотите?"
+        );
+        speech.lang = "ru-RU";
+        speech.rate = 0.92;
+        speech.pitch = 1.08;
+        speech.volume = 1;
+        window.speechSynthesis.speak(speech);
+      }
+    }, 1900);
+  }
+
+  function startAudio() {
+    const AudioClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioClass) {
+      soundButton.textContent = "Звук недоступен";
+      return;
+    }
+    if (audio) {
+      audio.resume();
+      master.gain.setTargetAtTime(.12, audio.currentTime, .2);
+      soundButton.textContent = "♫ Звук: вкл.";
+      return;
+    }
+    audio = new AudioClass();
+    master = audio.createGain();
+    master.gain.value = .12;
+    master.connect(audio.destination);
+
+    const oscillator = audio.createOscillator();
+    const volume = audio.createGain();
+    oscillator.type = "sine";
+    oscillator.frequency.value = 55;
+    volume.gain.value = .025;
+    oscillator.connect(volume);
+    volume.connect(master);
+    oscillator.start();
+    audio.resume();
+    soundButton.textContent = "♫ Звук: вкл.";
+  }
+
+  function showScene(index) {
+    if (finished) return;
+    if (index >= scenes.length) return finish();
+
+    current = index;
+    scenes.forEach((scene, i) => scene.classList.toggle("active", i === index));
+
+    if (index === 3) {
+      greeted = false;
+      setTimeout(() => {
+        if (interior.classList.contains("active")) greetCashier();
+      }, 1500);
+    } else {
+      cashier.classList.remove("rising");
+      greeted = false;
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    }
+
+    const duration = Number(scenes[index].dataset.time) || 5000;
+    const start = performance.now();
+    cancelAnimationFrame(frame);
+
+    function update(now) {
+      if (finished) return;
+      const fraction = Math.min((now - start) / duration, 1);
+      progress.style.width = ((index + fraction) / scenes.length * 100) + "%";
+      if (fraction < 1) frame = requestAnimationFrame(update);
+    }
+    frame = requestAnimationFrame(update);
+
+    clearTimeout(timer);
+    timer = setTimeout(() => showScene(index + 1), duration);
+  }
+
+  function finish() {
+    if (finished) return;
+    finished = true;
+    clearTimeout(timer);
+    cancelAnimationFrame(frame);
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    fade.classList.add("on");
+    progress.style.width = "100%";
+    setTimeout(() => { window.location.href = "index.html"; }, 1500);
+  }
+
+  startButton.addEventListener("click", () => {
+    if (started || finished) return;
+    started = true;
+    startScreen.classList.add("hidden");
+    startAudio();
+    setTimeout(() => showScene(0), 450);
+  });
+
+  soundButton.addEventListener("click", () => {
+    if (!audio) {
+      startAudio();
+    } else {
+      const enabled = master.gain.value < .01;
+      master.gain.setTargetAtTime(enabled ? .12 : 0, audio.currentTime, .15);
+      soundButton.textContent = enabled ? "♫ Звук: вкл." : "♫ Звук: выкл.";
+    }
+  });
+
+  skipButton.addEventListener("click", finish);
+})();
+</script>
+<!-- ============== END CRAVECRAFT CINEMATIC INTRO ============== -->
+
+</body>
+</html>

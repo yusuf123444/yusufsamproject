@@ -1,0 +1,3016 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>О нас — CRAVECRAFT</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .orange-text {
+            background: linear-gradient(90deg, #f4510b, #ff8a00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* DYNAMIC TEXT */
+
+        .dynamic-wrapper {
+            overflow: hidden;
+            position: relative;
+            transition: height .35s ease;
+        }
+
+        .dynamic-text {
+            cursor: pointer;
+            transition:
+                transform .55s ease,
+                opacity .55s ease;
+            will-change: transform, opacity;
+        }
+
+        .dynamic-text:hover {
+            opacity: .85;
+        }
+
+    </style>
+
+</head>
+
+
+<body class="bg-[#f7f7f6] text-[#151923]">
+
+
+
+
+
+    <!-- ====================================================== -->
+    <!-- NAVBAR -->
+    <!-- ====================================================== -->
+
+    <header
+        class="sticky top-0 z-50 h-[80px] border-b border-black/10 bg-white/95 backdrop-blur-xl">
+
+        <div
+            class="mx-auto flex h-full max-w-[1450px] items-center justify-between px-8">
+
+            <a
+                href="index.html"
+                class="text-[23px] font-black tracking-tight">
+
+                CRAVE<span class="text-orange-500">CRAFT</span>
+
+            </a>
+
+
+            <nav class="hidden items-center gap-8 md:flex">
+
+                <a
+                    href="index.html"
+                    class="font-semibold transition hover:text-orange-500">
+
+                    Главная
+
+                </a>
+
+
+                <a
+                    href="menu.html"
+                    class="font-semibold transition hover:text-orange-500">
+
+                    Меню
+
+                </a>
+
+       <a
+                    href="Ani.html"
+                    class="font-semibold transition hover:text-orange-500">
+
+                    Анимацаия
+
+                </a>
+
+                <a
+                    href="services.html"
+                    class="font-semibold transition hover:text-orange-500">
+
+                    Сервисы
+
+                </a>
+
+
+                <a
+                    href="about.html"
+                    class="font-bold text-orange-500">
+
+                    О нас
+
+                </a>
+
+
+                <a
+                    href="contacts.html"
+                    class="font-semibold transition hover:text-orange-500">
+
+                    Контакты
+
+                </a>
+
+            </nav>
+
+
+            <button
+                onclick="openModal('loginModal')"
+                class="rounded-xl bg-orange-500 px-6 py-3 text-sm font-black text-white transition hover:scale-105 hover:bg-orange-600">
+
+                Войти
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ====================================================== -->
+    <!-- HERO -->
+    <!-- ====================================================== -->
+
+    <section
+        class="min-h-[100vh] bg-[#fbfaf8] px-5">
+
+        <div
+            class="mx-auto grid min-h-[calc(100vh-80px)] max-w-[1450px] items-center gap-12 lg:grid-cols-2">
+
+
+            <!-- LEFT -->
+
+            <div>
+
+                <span
+                    class="inline-flex rounded-full bg-orange-50 px-4 py-2 text-[12px] font-black uppercase tracking-wide text-orange-500">
+
+                    О CRAVECRAFT
+
+                </span>
+
+
+                <!-- DYNAMIC HERO TITLE -->
+
+                <div
+                    id="heroTitleWrapper"
+                    class="dynamic-wrapper mt-7 max-w-[680px]">
+
+                    <h1
+                        id="heroTitle"
+                        onclick="changeDynamicText('heroTitle')"
+                        class="dynamic-text text-[52px] font-black leading-[.94] tracking-[-3px] md:text-[72px]">
+
+                        Мы создаём
+
+                        <br>
+
+                        <span class="orange-text">
+                            фастфуд,
+                        </span>
+
+                        который
+
+                        <br>
+
+                        хочется помнить.
+
+                    </h1>
+
+                </div>
+
+
+                <p
+                    class="mt-8 max-w-[590px] text-[16px] leading-7 text-gray-500">
+
+                    CRAVECRAFT — это современный fast food & grill,
+                    где быстрый заказ встречается с качественными
+                    ингредиентами, ярким вкусом и атмосферой настоящего
+                    ресторана.
+
+                </p>
+
+
+                <div class="mt-9 flex flex-wrap gap-3">
+
+                    <a
+                        href="menu.html"
+                        class="rounded-xl bg-orange-500 px-7 py-4 text-[14px] font-bold text-white shadow-[0_10px_30px_rgba(255,90,0,.2)] transition hover:-translate-y-1">
+
+                        Посмотреть меню →
+
+                    </a>
+
+
+                    <a
+                        href="#story"
+                        class="rounded-xl border border-gray-200 bg-white px-7 py-4 text-[14px] font-bold transition hover:border-orange-400 hover:text-orange-500">
+
+                        Наша история
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RIGHT -->
+
+            <div class="relative">
+
+                <div
+                    class="absolute -inset-8 rounded-[40px] bg-orange-300/20 blur-[70px]">
+                </div>
+
+
+                <div
+                    class="relative overflow-hidden rounded-[28px] border-[6px] border-white shadow-[0_30px_70px_rgba(0,0,0,.16)]">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1200&q=85"
+                        alt="Бургер CRAVECRAFT"
+                        class="h-[520px] w-full object-cover">
+
+                </div>
+
+
+                <div
+                    class="absolute -bottom-7 -left-5 rounded-2xl bg-white p-5 shadow-2xl md:left-[-30px]">
+
+                    <div class="flex items-center gap-4">
+
+                        <div
+                            class="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500 text-xl">
+
+                            🔥
+
+                        </div>
+
+
+                        <div>
+
+                            <p class="text-[20px] font-black">
+                                100%
+                            </p>
+
+                            <p class="text-[12px] text-gray-400">
+                                вкуса без компромиссов
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ====================================================== -->
+    <!-- NUMBERS -->
+    <!-- ====================================================== -->
+
+    <section
+        class="border-y border-gray-200 bg-white px-5 py-24">
+
+        <div class="mx-auto max-w-[1450px]">
+
+            <div class="text-center">
+
+                <span
+                    class="text-[12px] font-black uppercase tracking-[3px] text-orange-500">
+
+                    CRAVECRAFT В ЦИФРАХ
+
+                </span>
+
+
+                <h2
+                    class="mt-4 text-[38px] font-black">
+
+                    Нас выбирают каждый день
+
+                </h2>
+
+            </div>
+
+
+            <div
+                class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+
+
+                <div
+                    class="rounded-2xl border border-gray-200 bg-[#fafafa] p-8 text-center transition hover:-translate-y-2 hover:shadow-xl">
+
+                    <p
+                        class="text-[45px] font-black text-orange-500">
+
+                        15K+
+
+                    </p>
+
+                    <p
+                        class="mt-2 text-[13px] font-bold">
+
+                        довольных гостей
+
+                    </p>
+
+                    <p
+                        class="mt-2 text-[12px] leading-5 text-gray-400">
+
+                        Каждый месяц наши блюда
+                        отправляются на столы гостей.
+
+                    </p>
+
+                </div>
+
+
+
+                <div
+                    class="rounded-2xl border border-gray-200 bg-[#fafafa] p-8 text-center transition hover:-translate-y-2 hover:shadow-xl">
+
+                    <p
+                        class="text-[45px] font-black text-orange-500">
+
+                        12+
+
+                    </p>
+
+                    <p
+                        class="mt-2 text-[13px] font-bold">
+
+                        ресторанов
+
+                    </p>
+
+                    <p
+                        class="mt-2 text-[12px] leading-5 text-gray-400">
+
+                        CRAVECRAFT продолжает
+                        открывать новые точки.
+
+                    </p>
+
+                </div>
+
+
+
+                <div
+                    class="rounded-2xl border border-gray-200 bg-[#fafafa] p-8 text-center transition hover:-translate-y-2 hover:shadow-xl">
+
+                    <p
+                        class="text-[45px] font-black text-orange-500">
+
+                        30
+
+                    </p>
+
+                    <p
+                        class="mt-2 text-[13px] font-bold">
+
+                        минут доставки
+
+                    </p>
+
+                    <p
+                        class="mt-2 text-[12px] leading-5 text-gray-400">
+
+                        Мы стараемся доставлять
+                        горячие блюда максимально быстро.
+
+                    </p>
+
+                </div>
+
+
+
+                <div
+                    class="rounded-2xl border border-gray-200 bg-[#fafafa] p-8 text-center transition hover:-translate-y-2 hover:shadow-xl">
+
+                    <p
+                        class="text-[45px] font-black text-orange-500">
+
+                        4.9
+
+                    </p>
+
+                    <p
+                        class="mt-2 text-[13px] font-bold">
+
+                        средний рейтинг
+
+                    </p>
+
+                    <p
+                        class="mt-2 text-[12px] leading-5 text-gray-400">
+
+                        Мы постоянно собираем отзывы
+                        и улучшаем наши блюда.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ====================================================== -->
+    <!-- STORY -->
+    <!-- ====================================================== -->
+
+    <section
+        id="story"
+        class="min-h-[100vh] bg-[#f7f7f6] px-5 py-24">
+
+        <div
+            class="mx-auto grid max-w-[1450px] items-center gap-14 lg:grid-cols-2">
+
+
+            <div class="relative">
+
+                <div
+                    class="absolute -inset-5 rounded-[30px] bg-orange-200/30 blur-[50px]">
+                </div>
+
+
+                <div
+                    class="relative overflow-hidden rounded-[25px] border-[5px] border-white shadow-2xl">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=85"
+                        alt="Кухня CRAVECRAFT"
+                        class="h-[560px] w-full object-cover">
+
+                </div>
+
+            </div>
+
+
+
+            <div>
+
+                <span
+                    class="rounded-full bg-orange-50 px-4 py-2 text-[12px] font-black uppercase text-orange-500">
+
+                    Наша история
+
+                </span>
+
+
+                <!-- DYNAMIC STORY TITLE -->
+
+                <div
+                    id="storyTitleWrapper"
+                    class="dynamic-wrapper mt-6 max-w-[700px]">
+
+                    <h2
+                        id="storyTitle"
+                        onclick="changeDynamicText('storyTitle')"
+                        class="dynamic-text text-[42px] font-black leading-[1] md:text-[52px]">
+
+                        Всё началось
+
+                        <br>
+
+                        с одной простой идеи.
+
+                    </h2>
+
+                </div>
+
+
+                <p
+                    class="mt-7 text-[15px] leading-7 text-gray-500">
+
+                    Мы хотели доказать, что fast food может быть
+                    быстрым, доступным и при этом действительно
+                    качественным.
+
+                </p>
+
+
+                <p
+                    class="mt-5 text-[15px] leading-7 text-gray-500">
+
+                    Поэтому мы начали с простого:
+                    отборные продукты, свежие ингредиенты,
+                    собственные рецепты и правильная технология
+                    приготовления.
+
+                </p>
+
+
+                <p
+                    class="mt-5 text-[15px] leading-7 text-gray-500">
+
+                    Со временем маленькая идея превратилась
+                    в CRAVECRAFT — место, куда приходят не просто
+                    поесть, а получить эмоции от каждого укуса.
+
+                </p>
+
+
+                <div
+                    class="mt-9 border-l-4 border-orange-500 pl-5">
+
+                    <p
+                        class="text-[18px] font-black leading-7">
+
+                        «Если блюдо не вызывает желание
+                        попробовать ещё раз — мы можем сделать его лучше».
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ====================================================== -->
+    <!-- VALUES -->
+    <!-- ====================================================== -->
+
+    <section
+        class="min-h-[100vh] bg-white px-5 py-24">
+
+        <div class="mx-auto max-w-[1450px]">
+
+            <div class="max-w-[700px]">
+
+                <span
+                    class="rounded-full bg-orange-50 px-4 py-2 text-[12px] font-black uppercase text-orange-500">
+
+                    Наши принципы
+
+                </span>
+
+
+                <!-- DYNAMIC VALUES TITLE -->
+
+                <div
+                    id="valuesTitleWrapper"
+                    class="dynamic-wrapper mt-6">
+
+                    <h2
+                        id="valuesTitle"
+                        onclick="changeDynamicText('valuesTitle')"
+                        class="dynamic-text text-[42px] font-black leading-none md:text-[55px]">
+
+                        На чём держится
+
+                        <span class="orange-text">
+                            CRAVECRAFT
+                        </span>
+
+                    </h2>
+
+                </div>
+
+
+                <p
+                    class="mt-5 text-[15px] leading-6 text-gray-400">
+
+                    Мы придерживаемся нескольких принципов,
+                    которые определяют каждое блюдо и каждый
+                    наш ресторан.
+
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+
+
+                <!-- CARD 1 -->
+
+                <div
+                    class="group rounded-[22px] border border-gray-200 p-8 transition duration-300 hover:-translate-y-3 hover:border-orange-300 hover:shadow-[0_20px_50px_rgba(0,0,0,.08)]">
+
+                    <div
+                        class="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-50 text-2xl transition group-hover:scale-110">
+
+                        🥩
+
+                    </div>
+
+
+                    <h3 class="mt-7 text-[20px] font-black">
+                        Качественные продукты
+                    </h3>
+
+
+                    <p class="mt-3 text-[14px] leading-6 text-gray-400">
+
+                        Мы внимательно выбираем мясо,
+                        овощи, сыр, хлеб и остальные
+                        ингредиенты для наших блюд.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 2 -->
+
+                <div
+                    class="group rounded-[22px] border border-gray-200 p-8 transition duration-300 hover:-translate-y-3 hover:border-orange-300 hover:shadow-[0_20px_50px_rgba(0,0,0,.08)]">
+
+                    <div
+                        class="flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-50 text-2xl transition group-hover:scale-110">
+
+                        🔥
+
+                    </div>
+
+
+                    <h3 class="mt-7 text-[20px] font-black">
+                        Настоящий гриль
+                    </h3>
+
+
+                    <p class="mt-3 text-[14px] leading-6 text-gray-400">
+
+                        Открытый огонь и правильная
+                        температура позволяют раскрыть
+                        вкус каждого продукта.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 3 -->
+
+                <div
+                    class="group rounded-[22px] border border-gray-200 p-8 transition duration-300 hover:-translate-y-3 hover:border-orange-300 hover:shadow-[0_20px_50px_rgba(0,0,0,.08)]">
+
+                    <div
+                        class="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-50 text-2xl transition group-hover:scale-110">
+
+                        🥬
+
+                    </div>
+
+
+                    <h3 class="mt-7 text-[20px] font-black">
+                        Свежесть
+                    </h3>
+
+
+                    <p class="mt-3 text-[14px] leading-6 text-gray-400">
+
+                        Мы готовим блюда непосредственно
+                        перед подачей, чтобы сохранить
+                        вкус и текстуру.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 4 -->
+
+                <div
+                    class="group rounded-[22px] border border-gray-200 p-8 transition duration-300 hover:-translate-y-3 hover:border-orange-300 hover:shadow-[0_20px_50px_rgba(0,0,0,.08)]">
+
+                    <div
+                        class="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-2xl transition group-hover:scale-110">
+
+                        ⚡
+
+                    </div>
+
+
+                    <h3 class="mt-7 text-[20px] font-black">
+                        Скорость
+                    </h3>
+
+
+                    <p class="mt-3 text-[14px] leading-6 text-gray-400">
+
+                        Быстро не значит плохо.
+                        Мы оптимизируем процессы,
+                        чтобы не заставлять гостей ждать.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 5 -->
+
+                <div
+                    class="group rounded-[22px] border border-gray-200 p-8 transition duration-300 hover:-translate-y-3 hover:border-orange-300 hover:shadow-[0_20px_50px_rgba(0,0,0,.08)]">
+
+                    <div
+                        class="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-50 text-2xl transition group-hover:scale-110">
+
+                        ❤️
+
+                    </div>
+
+
+                    <h3 class="mt-7 text-[20px] font-black">
+                        Гости прежде всего
+                    </h3>
+
+
+                    <p class="mt-3 text-[14px] leading-6 text-gray-400">
+
+                        Мы слушаем наших гостей,
+                        читаем отзывы и постоянно
+                        улучшаем сервис.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 6 -->
+
+                <div
+                    class="group rounded-[22px] border border-gray-200 p-8 transition duration-300 hover:-translate-y-3 hover:border-orange-300 hover:shadow-[0_20px_50px_rgba(0,0,0,.08)]">
+
+                    <div
+                        class="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-2xl transition group-hover:scale-110">
+
+                        🚀
+
+                    </div>
+
+
+                    <h3 class="mt-7 text-[20px] font-black">
+                        Постоянное развитие
+                    </h3>
+
+
+                    <p class="mt-3 text-[14px] leading-6 text-gray-400">
+
+                        Новые блюда, новые идеи
+                        и новые форматы — мы никогда
+                        не останавливаемся.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ====================================================== -->
+    <!-- TEAM -->
+
+
+<!-- ================= OUR CHEFS ================= -->
+
+<section id="cc-chefs" class="bg-[#f7f7f6] px-5 py-24">
+
+    <div class="mx-auto max-w-[1450px]">
+
+        <!-- HEADER -->
+
+        <div class="flex flex-wrap items-end justify-between gap-6">
+
+            <div>
+                <span class="text-[12px] font-black uppercase tracking-[3px] text-orange-500">
+                    CRAVECRAFT KITCHEN
+                </span>
+
+                <h2 class="mt-4 text-[42px] font-black leading-tight md:text-[55px]">
+                    Наши <span class="orange-text">повара.</span>
+                </h2>
+
+                <p class="mt-4 max-w-[550px] text-[15px] leading-7 text-gray-500">
+                    Люди, которые превращают свежие ингредиенты
+                    в блюда с характером.
+                </p>
+            </div>
+
+            <!-- ARROWS -->
+
+            <div class="flex gap-3">
+
+                <button
+                    onclick="ccChefScroll(-1)"
+                    aria-label="Предыдущие повара"
+                    class="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-2xl transition hover:border-orange-500 hover:bg-orange-500 hover:text-white">
+                    ←
+                </button>
+
+                <button
+                    onclick="ccChefScroll(1)"
+                    aria-label="Следующие повара"
+                    class="flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-2xl text-white shadow-lg shadow-orange-500/20 transition hover:scale-105 hover:bg-orange-600">
+                    →
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SLIDER -->
+
+        <div
+            id="ccChefTrack"
+            class="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6"
+            style="scrollbar-width:none;">
+
+            <!-- CHEF 1 -->
+
+            <article class="w-[280px] flex-none snap-start overflow-hidden rounded-[25px] bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl md:w-[340px]">
+
+                <div class="relative overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=800&q=85"
+                        alt="Шеф-повар"
+                        loading="lazy"
+                        class="h-[350px] w-full object-cover transition duration-500 hover:scale-105">
+
+                    <span class="absolute left-4 top-4 rounded-full bg-white/95 px-4 py-2 text-[11px] font-black text-orange-500">
+                        HEAD CHEF
+                    </span>
+                </div>
+
+                <div class="p-6">
+                    <h3 class="text-[22px] font-black">Александр</h3>
+                    <p class="mt-2 text-[13px] font-bold text-orange-500">
+                        Главный шеф-повар
+                    </p>
+                    <p class="mt-4 text-[14px] leading-6 text-gray-500">
+                        Разрабатывает рецепты и следит за качеством каждого блюда.
+                    </p>
+                </div>
+
+            </article>
+
+
+            <!-- CHEF 2 -->
+
+            <article class="w-[280px] flex-none snap-start overflow-hidden rounded-[25px] bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl md:w-[340px]">
+
+                <div class="relative overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1574966391864-4b5c1b1a1c20?auto=format&fit=crop&w=800&q=85"
+                        alt="Повар гриль"
+                        loading="lazy"
+                        class="h-[350px] w-full object-cover transition duration-500 hover:scale-105">
+
+                    <span class="absolute left-4 top-4 rounded-full bg-white/95 px-4 py-2 text-[11px] font-black text-orange-500">
+                        GRILL MASTER
+                    </span>
+                </div>
+
+                <div class="p-6">
+                    <h3 class="text-[22px] font-black">Даниэль</h3>
+                    <p class="mt-2 text-[13px] font-bold text-orange-500">
+                        Мастер гриля
+                    </p>
+                    <p class="mt-4 text-[14px] leading-6 text-gray-500">
+                        Готовит сочные бургеры и раскрывает вкус мяса на гриле.
+                    </p>
+                </div>
+
+            </article>
+
+
+            <!-- CHEF 3 -->
+
+            <article class="w-[280px] flex-none snap-start overflow-hidden rounded-[25px] bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl md:w-[340px]">
+
+                <div class="relative overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=800&q=85"
+                        alt="Повар кухни"
+                        loading="lazy"
+                        class="h-[350px] w-full object-cover transition duration-500 hover:scale-105">
+
+                    <span class="absolute left-4 top-4 rounded-full bg-white/95 px-4 py-2 text-[11px] font-black text-orange-500">
+                        BURGER EXPERT
+                    </span>
+                </div>
+
+                <div class="p-6">
+                    <h3 class="text-[22px] font-black">Марк</h3>
+                    <p class="mt-2 text-[13px] font-bold text-orange-500">
+                        Эксперт по бургерам
+                    </p>
+                    <p class="mt-4 text-[14px] leading-6 text-gray-500">
+                        Подбирает сочетания соусов, сыра и свежих ингредиентов.
+                    </p>
+                </div>
+
+            </article>
+
+
+            <!-- CHEF 4 -->
+
+            <article class="w-[280px] flex-none snap-start overflow-hidden rounded-[25px] bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl md:w-[340px]">
+
+                <div class="relative overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=85"
+                        alt="Повар на кухне"
+                        loading="lazy"
+                        class="h-[350px] w-full object-cover transition duration-500 hover:scale-105">
+
+                    <span class="absolute left-4 top-4 rounded-full bg-white/95 px-4 py-2 text-[11px] font-black text-orange-500">
+                        FRESH FOOD
+                    </span>
+                </div>
+
+                <div class="p-6">
+                    <h3 class="text-[22px] font-black">Эмиль</h3>
+                    <p class="mt-2 text-[13px] font-bold text-orange-500">
+                        Специалист по ингредиентам
+                    </p>
+                    <p class="mt-4 text-[14px] leading-6 text-gray-500">
+                        Отвечает за свежесть продуктов и аккуратную подачу.
+                    </p>
+                </div>
+
+            </article>
+
+
+            <!-- CHEF 5 -->
+
+            <article class="w-[280px] flex-none snap-start overflow-hidden rounded-[25px] bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl md:w-[340px]">
+
+                <div class="relative overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=85"
+                        alt="Приготовление пиццы"
+                        loading="lazy"
+                        class="h-[350px] w-full object-cover transition duration-500 hover:scale-105">
+
+                    <span class="absolute left-4 top-4 rounded-full bg-white/95 px-4 py-2 text-[11px] font-black text-orange-500">
+                        CREATIVE CHEF
+                    </span>
+                </div>
+
+                <div class="p-6">
+                    <h3 class="text-[22px] font-black">Давид</h3>
+                    <p class="mt-2 text-[13px] font-bold text-orange-500">
+                        Разработчик новых блюд
+                    </p>
+                    <p class="mt-4 text-[14px] leading-6 text-gray-500">
+                        Экспериментирует со вкусами и создаёт новые позиции меню.
+                    </p>
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- FOOTER LABEL -->
+
+        <div class="mt-3 flex items-center justify-between gap-4">
+
+            <p class="text-[12px] text-gray-400">
+                Листай, чтобы познакомиться со всей командой
+            </p>
+
+            <span class="text-[12px] font-black tracking-widest text-orange-500">
+                01 — 05
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+function ccChefScroll(direction) {
+    const track = document.getElementById("ccChefTrack");
+
+    if (!track) return;
+
+    const card = track.querySelector("article");
+
+    const distance = card
+        ? card.getBoundingClientRect().width + 24
+        : 364;
+
+    track.scrollBy({
+        left: direction * distance,
+        behavior: "smooth"
+    });
+}
+</script>
+
+
+    <!-- ====================================================== -->
+
+    <section
+        class="min-h-[100vh] bg-[#1b1a19] px-5 py-24 text-white">
+
+        <div class="mx-auto max-w-[1450px]">
+
+            <div class="text-center">
+
+                <span
+                    class="rounded-full bg-orange-500/10 px-4 py-2 text-[12px] font-black uppercase text-orange-500">
+
+                    Команда
+
+                </span>
+
+
+                <!-- DYNAMIC TEAM TITLE -->
+
+                <div
+                    id="teamTitleWrapper"
+                    class="dynamic-wrapper mx-auto mt-6 max-w-[900px]">
+
+                    <h2
+                        id="teamTitle"
+                        onclick="changeDynamicText('teamTitle')"
+                        class="dynamic-text text-[42px] font-black md:text-[55px]">
+
+                        Люди, которые создают
+
+                        <span class="text-orange-500">
+                            вкус
+                        </span>
+
+                    </h2>
+
+                </div>
+
+
+                <p
+                    class="mx-auto mt-5 max-w-[650px] text-[14px] leading-6 text-gray-500">
+
+                    За каждым блюдом CRAVECRAFT стоит команда
+                    поваров, менеджеров, курьеров и людей,
+                    которые любят то, что делают.
+
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="mt-14 grid gap-6 md:grid-cols-3">
+
+
+                <!-- PERSON 1 -->
+
+                <div
+                    class="overflow-hidden rounded-[22px] border border-white/10 bg-white/[.03]">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=900&q=85"
+                        alt="Шеф-повар"
+                        class="h-[330px] w-full object-cover">
+
+                    <div class="p-6">
+
+                        <p
+                            class="text-[11px] font-bold uppercase tracking-wider text-orange-500">
+
+                            Kitchen
+
+                        </p>
+
+
+                        <h3 class="mt-2 text-[20px] font-black">
+                            Шеф-повар
+                        </h3>
+
+
+                        <p
+                            class="mt-3 text-[13px] leading-5 text-gray-500">
+
+                            Отвечает за вкус, рецепты
+                            и качество каждого блюда.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PERSON 2 -->
+
+                <div
+                    class="overflow-hidden rounded-[22px] border border-white/10 bg-white/[.03]">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85"
+                        alt="Команда CRAVECRAFT"
+                        class="h-[330px] w-full object-cover">
+
+                    <div class="p-6">
+
+                        <p
+                            class="text-[11px] font-bold uppercase tracking-wider text-orange-500">
+
+                            Management
+
+                        </p>
+
+
+                        <h3 class="mt-2 text-[20px] font-black">
+                            Команда менеджеров
+                        </h3>
+
+
+                        <p
+                            class="mt-3 text-[13px] leading-5 text-gray-500">
+
+                            Следит за тем, чтобы сервис
+                            оставался на высоком уровне.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PERSON 3 -->
+
+                <div
+                    class="overflow-hidden rounded-[22px] border border-white/10 bg-white/[.03]">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=85"
+                        alt="Команда"
+                        class="h-[330px] w-full object-cover">
+
+                    <div class="p-6">
+
+                        <p
+                            class="text-[11px] font-bold uppercase tracking-wider text-orange-500">
+
+                            CRAVECRAFT TEAM
+
+                        </p>
+
+
+                        <h3 class="mt-2 text-[20px] font-black">
+                            Наша команда
+                        </h3>
+
+
+                        <p
+                            class="mt-3 text-[13px] leading-5 text-gray-500">
+
+                            Люди, которые каждый день
+                            делают CRAVECRAFT лучше.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ====================================================== -->
+    <!-- CTA -->
+    <!-- ====================================================== -->
+
+    <section
+        class="min-h-[70vh] bg-[#f7f7f6] px-5 py-24">
+
+        <div
+            class="mx-auto flex max-w-[1100px] flex-col items-center justify-center text-center">
+
+
+            <div
+                class="flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-500 text-2xl shadow-[0_15px_40px_rgba(255,105,0,.25)]">
+
+                🔥
+
+            </div>
+
+
+            <!-- DYNAMIC CTA TITLE -->
+
+            <div
+                id="ctaTitleWrapper"
+                class="dynamic-wrapper mt-8 max-w-[1000px]">
+
+                <h2
+                    id="ctaTitle"
+                    onclick="changeDynamicText('ctaTitle')"
+                    class="dynamic-text text-[45px] font-black leading-none tracking-[-2px] md:text-[65px]">
+
+                    Теперь ты знаешь,
+
+                    <br>
+
+                    <span class="orange-text">
+                        кто мы.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <p
+                class="mt-6 max-w-[600px] text-[15px] leading-6 text-gray-400">
+
+                Осталось самое интересное — попробовать,
+                почему гости возвращаются к нам снова и снова.
+
+            </p>
+
+
+            <div class="mt-9 flex flex-wrap justify-center gap-3">
+
+                <a
+                    href="menu.html"
+                    class="rounded-xl bg-orange-500 px-8 py-4 text-[14px] font-black text-white shadow-[0_10px_30px_rgba(255,90,0,.2)] transition hover:-translate-y-1 hover:bg-orange-600">
+
+                    Открыть меню →
+
+                </a>
+
+
+                <a
+                    href="contacts.html"
+                    class="rounded-xl border border-gray-200 bg-white px-8 py-4 text-[14px] font-bold transition hover:border-orange-400 hover:text-orange-500">
+
+                    Связаться с нами
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ====================================================== -->
+    <!-- FOOTER -->
+    <!-- ====================================================== -->
+
+    <footer
+        class="bg-[#171615] px-5 py-14 text-white">
+
+        <div
+            class="mx-auto flex max-w-[1450px] flex-col justify-between gap-10 md:flex-row">
+
+
+            <div>
+
+                <h2 class="text-[20px] font-black">
+
+                    CRAVE<span class="text-orange-500">
+                        CRAFT
+                    </span>
+
+                </h2>
+
+
+                <p
+                    class="mt-3 max-w-[280px] text-[13px] leading-5 text-gray-500">
+
+                    Fast Food & Grill нового поколения.
+                    Настоящий вкус без компромиссов.
+
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <p class="text-[14px] font-bold">
+                    Навигация
+                </p>
+
+
+                <div class="mt-4 space-y-2">
+
+                    <a
+                        href="index.html"
+                        class="block text-[13px] text-gray-500 hover:text-orange-500">
+
+                        Главная
+
+                    </a>
+
+
+                    <a
+                        href="menu.html"
+                        class="block text-[13px] text-gray-500 hover:text-orange-500">
+
+                        Меню
+
+                    </a>
+
+
+                    <a
+                        href="services.html"
+                        class="block text-[13px] text-gray-500 hover:text-orange-500">
+
+                        Сервисы
+
+                    </a>
+
+
+                    <a
+                        href="about.html"
+                        class="block text-[13px] text-orange-500">
+
+                        О нас
+
+                    </a>
+
+
+                    <a
+                        href="contacts.html"
+                        class="block text-[13px] text-gray-500 hover:text-orange-500">
+
+                        Контакты
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div>
+
+                <p class="text-[14px] font-bold">
+                    Контакты
+                </p>
+
+
+                <div
+                    class="mt-4 space-y-2 text-[13px] text-gray-500">
+
+                    <p>
+                        📍 Ташкент, Амир Темур 15
+                    </p>
+
+                    <p>
+                        📞 +998 71 555 35 37
+                    </p>
+
+                    <p>
+                        ✉ hello@cravecraft.uz
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="mx-auto mt-10 max-w-[1450px] border-t border-white/10 pt-5 text-center text-[11px] text-gray-600">
+
+            © 2026 CRAVECRAFT. Все права защищены.
+
+        </div>
+
+
+<!-- CRAVECRAFT MINI PORTAL -->
+
+<style>
+#cc-mini-portal {
+    padding: 70px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    
+    overflow: hidden;
+}
+
+#cc-mini-portal .portal-circle {
+    width: 300px;
+    height: 300px;
+    max-width: 85vw;
+    max-height: 85vw;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid #ff7417;
+    box-shadow: 0 0 25px #ff6500,
+                0 0 65px rgba(255, 85, 0, .35);
+    isolation: isolate;
+}
+
+#cc-mini-portal iframe {
+    position: absolute;
+    width: 1200px;
+    height: 900px;
+    max-width: none;
+    border: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.25);
+    transform-origin: center;
+    pointer-events: none;
+}
+
+#cc-mini-portal .portal-ring {
+    position: absolute;
+    inset: -2px;
+    border: 4px solid transparent;
+    border-top-color: #ffb06a;
+    border-bottom-color: #ff4d00;
+    border-radius: 50%;
+    box-shadow: inset 0 0 20px #ff6500;
+    pointer-events: none;
+    animation: ccRingSpin 5s linear infinite;
+    z-index: 2;
+}
+
+#cc-mini-portal .portal-label {
+    color: #ff8b3d;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+#cc-mini-portal .portal-circle:hover {
+    box-shadow: 0 0 35px #ff6500,
+                0 0 90px rgba(255, 85, 0, .6);
+}
+
+@keyframes ccRingSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* ПЕРЕХОД КАМЕРЫ */
+
+#cc-portal-flight {
+    position: fixed;
+    z-index: 999999;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: #050505;
+    overflow: hidden;
+}
+
+#cc-portal-flight.active {
+    display: flex;
+}
+
+#cc-portal-flight .flight-circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    border: 4px solid #ff7417;
+    box-shadow: 0 0 35px #ff6500,
+                0 0 100px #ff4500;
+}
+
+#cc-portal-flight iframe {
+    width: 1200px;
+    height: 900px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 0;
+    transform: translate(-50%, -50%) scale(.25);
+    transform-origin: center;
+    pointer-events: none;
+}
+
+#cc-portal-flight.active .flight-circle {
+    animation: ccFlyIntoPortal 1.5s cubic-bezier(.5, 0, .8, .4) forwards;
+}
+
+@keyframes ccFlyIntoPortal {
+    0% {
+        transform: scale(1);
+        border-radius: 50%;
+    }
+    70% {
+        border-radius: 35%;
+    }
+    100% {
+        transform: scale(var(--cc-flight-scale));
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    #cc-mini-portal .portal-circle {
+        width: 280px;
+        height: 280px;
+    }
+}
+</style>
+
+<section id="cc-mini-portal">
+
+    <div class="portal-circle" onclick="ccOpenMenuPortal()">
+        <iframe src="contacts.html  " title="CRAVECRAFT Menu"></iframe>
+        <div class="portal-ring"></div>
+    </div>
+
+    <div class="portal-label">
+        ENTER THE CRAVECRAFT WORLD
+    </div>
+
+</section>
+
+<div id="cc-portal-flight">
+    <div class="flight-circle">
+        <iframe src="contacts.html" title="Menu transition"></iframe>
+    </div>
+</div>
+
+<script>
+function ccOpenMenuPortal() {
+    const flight = document.getElementById("cc-portal-flight");
+    const circle = flight.querySelector(".flight-circle");
+
+    const diagonal = Math.hypot(
+        window.innerWidth,
+        window.innerHeight
+    );
+
+    flight.style.setProperty(
+        "--cc-flight-scale",
+        diagonal / 300 + 2
+    );
+
+    flight.classList.add("active");
+
+    setTimeout(() => {
+        window.location.href = "contacts.html";
+    }, 1350);
+}
+</script>
+
+        
+    </footer>
+
+
+
+    <!-- ====================================================== -->
+    <!-- LOGIN MODAL -->
+    <!-- ====================================================== -->
+
+    <div
+        id="loginModal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 px-4">
+
+        <div
+            class="relative w-full max-w-[400px] rounded-[24px] bg-white p-7 text-[#151923] shadow-2xl">
+
+
+            <button
+                onclick="closeModal('loginModal')"
+                class="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#f1f2f4] text-[22px] text-[#555] transition hover:bg-gray-200">
+
+                ×
+
+            </button>
+
+
+            <div class="flex justify-center">
+
+                <div
+                    class="flex h-[58px] w-[58px] items-center justify-center rounded-[18px] bg-orange-500 text-[28px] shadow-lg shadow-orange-500/20">
+
+                    👤
+
+                </div>
+
+            </div>
+
+
+            <div class="mt-5 text-center">
+
+                <h2 class="text-[27px] font-black tracking-[-1px]">
+
+                    Добро пожаловать!
+
+                </h2>
+
+
+                <p class="mt-1 text-[13px] text-[#7b8498]">
+
+                    Войдите в свой аккаунт CRAVECRAFT
+
+                </p>
+
+            </div>
+
+
+            <form
+                onsubmit="login(event)"
+                class="mt-6">
+
+
+                <label class="block">
+
+                    <span class="text-[13px] font-bold">
+
+                        Gmail / Email
+
+                    </span>
+
+
+                    <input
+                        required
+                        type="email"
+                        placeholder="Введите Gmail / Email"
+                        class="mt-2 h-[47px] w-full rounded-[11px] border border-[#dfe3e9] bg-[#f7f8fa] px-4 text-[14px] outline-none transition focus:border-orange-500 focus:bg-white">
+
+                </label>
+
+
+                <label class="mt-4 block">
+
+                    <div class="flex items-center justify-between">
+
+                        <span class="text-[13px] font-bold">
+                            Пароль
+                        </span>
+
+
+                        <button
+                            type="button"
+                            onclick="forgotPassword()"
+                            class="text-[12px] font-bold text-orange-500 hover:text-orange-600">
+
+                            Забыли пароль?
+
+                        </button>
+
+                    </div>
+
+
+                    <input
+                        required
+                        type="password"
+                        placeholder="Введите пароль"
+                        class="mt-2 h-[47px] w-full rounded-[11px] border border-[#dfe3e9] bg-[#f7f8fa] px-4 text-[14px] outline-none transition focus:border-orange-500 focus:bg-white">
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="mt-5 h-[48px] w-full rounded-[11px] bg-[#ff6900] text-[14px] font-black text-white transition hover:bg-[#f45d00] hover:shadow-lg hover:shadow-orange-500/20">
+
+                    Войти
+
+                </button>
+
+
+                <div class="my-5 flex items-center gap-3">
+
+                    <div class="h-px flex-1 bg-[#e1e4e9]"></div>
+
+                    <span class="text-[12px] font-semibold text-[#9da5b4]">
+                        или
+                    </span>
+
+                    <div class="h-px flex-1 bg-[#e1e4e9]"></div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    onclick="googleLogin()"
+                    class="flex h-[47px] w-full items-center justify-center gap-3 rounded-[11px] border border-[#dfe3e9] bg-white text-[13px] font-bold transition hover:bg-[#f7f7f7]">
+
+                    <span class="text-[20px] font-black">
+                        G
+                    </span>
+
+                    Продолжить через Google
+
+                </button>
+
+
+                <div
+                    class="mt-5 text-center text-[12px] text-[#8b94a5]">
+
+                    Нет аккаунта?
+
+                    <button
+                        type="button"
+                        onclick="alert('Регистрация скоро будет доступна!')"
+                        class="font-bold text-orange-500 hover:text-orange-600">
+
+                        Создать аккаунт
+
+                    </button>
+
+                </div>
+
+
+                <p
+                    class="mt-4 text-center text-[10px] leading-4 text-[#a1a9b7]">
+
+                    Продолжая, вы соглашаетесь с условиями
+                    использования CRAVECRAFT.
+
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ====================================================== -->
+    <!-- JAVASCRIPT -->
+    <!-- ====================================================== -->
+
+    <script>
+
+        /* =========================
+           MODALS
+        ========================= */
+
+        function openModal(id) {
+
+            const modal = document.getElementById(id);
+
+            if (!modal) return;
+
+            modal.classList.remove("hidden");
+
+            modal.classList.add("flex");
+
+            document.body.classList.add("overflow-hidden");
+
+        }
+
+
+        function closeModal(id) {
+
+            const modal = document.getElementById(id);
+
+            if (!modal) return;
+
+            modal.classList.add("hidden");
+
+            modal.classList.remove("flex");
+
+            document.body.classList.remove("overflow-hidden");
+
+        }
+
+
+        function login(event) {
+
+            event.preventDefault();
+
+            alert("Вы успешно вошли в аккаунт!");
+
+            closeModal("loginModal");
+
+        }
+
+
+        function forgotPassword() {
+
+            alert(
+                "Ссылка для восстановления пароля будет отправлена на вашу почту."
+            );
+
+        }
+
+
+        function googleLogin() {
+
+            alert(
+                "Авторизация через Google будет доступна после подключения Google OAuth."
+            );
+
+        }
+
+
+        document.addEventListener("click", function(event) {
+
+            const modal = document.getElementById("loginModal");
+
+            if (modal && event.target === modal) {
+
+                closeModal("loginModal");
+
+            }
+
+        });
+
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+
+                closeModal("loginModal");
+
+            }
+
+        });
+
+
+
+        /* =========================
+           DYNAMIC TEXTS
+        ========================= */
+
+        const dynamicTexts = {
+
+
+            heroTitle: [
+
+                {
+                    html: `
+                        Мы создаём
+                        <br>
+                        <span class="orange-text">фастфуд,</span>
+                        который
+                        <br>
+                        хочется помнить.
+                    `,
+                    font: "Arial Black, Arial, sans-serif"
+                },
+
+                {
+                    html: `
+                        Мы создаём
+                        <br>
+                        <span class="orange-text">вкус,</span>
+                        который
+                        <br>
+                        хочется повторить.
+                    `,
+                    font: "Georgia, serif"
+                },
+
+                {
+                    html: `
+                        Быстрая еда.
+                        <br>
+                        <span class="orange-text">Большой вкус.</span>
+                        <br>
+                        Настоящий CRAVE.
+                    `,
+                    font: "Trebuchet MS, sans-serif"
+                },
+
+                {
+                    html: `
+                        ФАСТФУД
+                        <br>
+                        <span class="orange-text">БЕЗ СКУКИ.</span>
+                    `,
+                    font: "Impact, sans-serif"
+                },
+
+                {
+                    html: `
+                        CRAVECRAFT —
+                        <br>
+                        <span class="orange-text">ЭТО БОЛЬШЕ,</span>
+                        <br>
+                        ЧЕМ ЕДА.
+                    `,
+                    font: "Courier New, monospace"
+                }
+
+            ],
+
+
+
+            storyTitle: [
+
+                {
+                    html: `
+                        Всё началось
+                        <br>
+                        с одной простой идеи.
+                    `,
+                    font: "Arial Black, Arial, sans-serif"
+                },
+
+                {
+                    html: `
+                        Одна идея.
+                        <br>
+                        <span class="orange-text">Один вкус.</span>
+                        <br>
+                        Большая история.
+                    `,
+                    font: "Georgia, serif"
+                },
+
+                {
+                    html: `
+                        Мы просто хотели
+                        <br>
+                        сделать <span class="orange-text">еду лучше.</span>
+                    `,
+                    font: "Trebuchet MS, sans-serif"
+                },
+
+                {
+                    html: `
+                        ВСЁ НАЧАЛОСЬ
+                        <br>
+                        <span class="orange-text">С ИДЕИ.</span>
+                    `,
+                    font: "Impact, sans-serif"
+                },
+
+                {
+                    html: `
+                        FROM ONE IDEA
+                        <br>
+                        <span class="orange-text">TO CRAVECRAFT.</span>
+                    `,
+                    font: "Courier New, monospace"
+                }
+
+            ],
+
+
+
+            valuesTitle: [
+
+                {
+                    html: `
+                        На чём держится
+                        <span class="orange-text">
+                            CRAVECRAFT
+                        </span>
+                    `,
+                    font: "Arial Black, Arial, sans-serif"
+                },
+
+                {
+                    html: `
+                        Что делает
+                        <br>
+                        <span class="orange-text">нас особенными?</span>
+                    `,
+                    font: "Georgia, serif"
+                },
+
+                {
+                    html: `
+                        Наш вкус.
+                        <br>
+                        Наш подход.
+                        <br>
+                        <span class="orange-text">Наши принципы.</span>
+                    `,
+                    font: "Trebuchet MS, sans-serif"
+                },
+
+                {
+                    html: `
+                        НАШИ
+                        <br>
+                        <span class="orange-text">ПРАВИЛА.</span>
+                    `,
+                    font: "Impact, sans-serif"
+                },
+
+                {
+                    html: `
+                        QUALITY.
+                        <br>
+                        TASTE.
+                        <br>
+                        <span class="orange-text">CRAVECRAFT.</span>
+                    `,
+                    font: "Courier New, monospace"
+                }
+
+            ],
+
+
+
+            teamTitle: [
+
+                {
+                    html: `
+                        Люди, которые создают
+                        <span class="text-orange-500">
+                            вкус
+                        </span>
+                    `,
+                    font: "Arial Black, Arial, sans-serif"
+                },
+
+                {
+                    html: `
+                        За каждым вкусом
+                        <br>
+                        стоят <span class="text-orange-500">люди.</span>
+                    `,
+                    font: "Georgia, serif"
+                },
+
+                {
+                    html: `
+                        Команда,
+                        <br>
+                        которая делает
+                        <span class="text-orange-500">CRAVE.</span>
+                    `,
+                    font: "Trebuchet MS, sans-serif"
+                },
+
+                {
+                    html: `
+                        ЛЮДИ.
+                        <br>
+                        <span class="text-orange-500">СТРАСТЬ.</span>
+                        <br>
+                        ВКУС.
+                    `,
+                    font: "Impact, sans-serif"
+                },
+
+                {
+                    html: `
+                        MEET THE
+                        <br>
+                        <span class="text-orange-500">CRAVECRAFT TEAM.</span>
+                    `,
+                    font: "Courier New, monospace"
+                }
+
+            ],
+
+
+
+            ctaTitle: [
+
+                {
+                    html: `
+                        Теперь ты знаешь,
+                        <br>
+                        <span class="orange-text">
+                            кто мы.
+                        </span>
+                    `,
+                    font: "Arial Black, Arial, sans-serif"
+                },
+
+                {
+                    html: `
+                        Теперь осталось
+                        <br>
+                        <span class="orange-text">
+                            попробовать.
+                        </span>
+                    `,
+                    font: "Georgia, serif"
+                },
+
+                {
+                    html: `
+                        Ты знаешь историю.
+                        <br>
+                        Теперь узнай
+                        <span class="orange-text">вкус.</span>
+                    `,
+                    font: "Trebuchet MS, sans-serif"
+                },
+
+                {
+                    html: `
+                        ГОТОВ?
+                        <br>
+                        <span class="orange-text">
+                            ПОЕХАЛИ.
+                        </span>
+                    `,
+                    font: "Impact, sans-serif"
+                },
+
+                {
+                    html: `
+                        YOUR CRAVE.
+                        <br>
+                        <span class="orange-text">
+                            YOUR CHOICE.
+                        </span>
+                    `,
+                    font: "Courier New, monospace"
+                }
+
+            ]
+
+        };
+
+
+
+        /* =========================
+           STATE
+        ========================= */
+
+        const dynamicIndex = {
+
+            heroTitle: 0,
+
+            storyTitle: 0,
+
+            valuesTitle: 0,
+
+            teamTitle: 0,
+
+            ctaTitle: 0
+
+        };
+
+
+        const dynamicBusy = {
+
+            heroTitle: false,
+
+            storyTitle: false,
+
+            valuesTitle: false,
+
+            teamTitle: false,
+
+            ctaTitle: false
+
+        };
+
+
+
+        /* =========================
+           CALCULATE MAX HEIGHT
+        ========================= */
+
+        function calculateDynamicHeight(id) {
+
+            const element = document.getElementById(id);
+
+            const wrapper = document.getElementById(
+                id + "Wrapper"
+            );
+
+            const variants = dynamicTexts[id];
+
+            if (!element || !wrapper || !variants) return;
+
+
+            const oldHTML = element.innerHTML;
+
+            const oldFont = element.style.fontFamily;
+
+            const oldTransition = element.style.transition;
+
+            const oldTransform = element.style.transform;
+
+            const oldOpacity = element.style.opacity;
+
+
+            element.style.transition = "none";
+
+            element.style.transform = "none";
+
+            element.style.opacity = "1";
+
+
+            let maxHeight = 0;
+
+
+            variants.forEach(function(variant) {
+
+                element.innerHTML = variant.html;
+
+                element.style.fontFamily = variant.font;
+
+                maxHeight = Math.max(
+                    maxHeight,
+                    element.scrollHeight
+                );
+
+            });
+
+
+            element.innerHTML = oldHTML;
+
+            element.style.fontFamily = oldFont;
+
+            element.style.transition = oldTransition;
+
+            element.style.transform = oldTransform;
+
+            element.style.opacity = oldOpacity;
+
+
+            wrapper.style.height =
+                (maxHeight + 12) + "px";
+
+        }
+
+
+
+        /* =========================
+           CHANGE TEXT
+        ========================= */
+
+        function changeDynamicText(id) {
+
+            if (dynamicBusy[id]) return;
+
+            const element = document.getElementById(id);
+
+            const wrapper = document.getElementById(
+                id + "Wrapper"
+            );
+
+            const variants = dynamicTexts[id];
+
+            if (!element || !wrapper || !variants) return;
+
+
+            dynamicBusy[id] = true;
+
+
+            /* OLD TEXT GOES UP */
+
+            element.style.transform =
+                "translateY(-110%)";
+
+            element.style.opacity = "0";
+
+
+            setTimeout(function() {
+
+                dynamicIndex[id]++;
+
+                if (
+                    dynamicIndex[id] >=
+                    variants.length
+                ) {
+
+                    dynamicIndex[id] = 0;
+
+                }
+
+
+                const current =
+                    variants[dynamicIndex[id]];
+
+
+                /* CHANGE CONTENT */
+
+                element.innerHTML =
+                    current.html;
+
+                element.style.fontFamily =
+                    current.font;
+
+
+                /* PUT NEW TEXT BELOW */
+
+                element.style.transition =
+                    "none";
+
+                element.style.transform =
+                    "translateY(110%)";
+
+                element.style.opacity =
+                    "0";
+
+
+                /* FORCE BROWSER REFLOW */
+
+                element.offsetHeight;
+
+
+                /* NEW TEXT COMES FROM BELOW */
+
+                element.style.transition =
+                    "transform .55s ease, opacity .55s ease";
+
+                element.style.transform =
+                    "translateY(0)";
+
+                element.style.opacity =
+                    "1";
+
+
+                setTimeout(function() {
+
+                    dynamicBusy[id] = false;
+
+                }, 600);
+
+
+            }, 550);
+
+        }
+
+
+
+        /* =========================
+           INITIALIZE
+        ========================= */
+
+        function initializeDynamicText() {
+
+            Object.keys(dynamicTexts).forEach(function(id) {
+
+                const element =
+                    document.getElementById(id);
+
+                if (!element) return;
+
+
+                const first =
+                    dynamicTexts[id][0];
+
+
+                element.innerHTML =
+                    first.html;
+
+                element.style.fontFamily =
+                    first.font;
+
+
+                calculateDynamicHeight(id);
+
+            });
+
+        }
+
+
+
+        /* =========================
+           RESIZE
+        ========================= */
+
+        let resizeTimer;
+
+
+        window.addEventListener("resize", function() {
+
+            clearTimeout(resizeTimer);
+
+
+            resizeTimer = setTimeout(function() {
+
+                Object.keys(dynamicTexts).forEach(
+                    function(id) {
+
+                        calculateDynamicHeight(id);
+
+                    }
+                );
+
+            }, 150);
+
+        });
+
+
+
+        /* =========================
+           START
+        ========================= */
+
+        window.addEventListener(
+            "load",
+            initializeDynamicText
+        );
+
+    </script>
+
+
+<!-- ========================================= -->
+<!-- BURGER CURSOR -->
+<!-- ========================================= -->
+
+<div id="burgerCursor">
+    <div class="burger-top"></div>
+    <div class="burger-cheese"></div>
+    <div class="burger-meat"></div>
+    <div class="burger-bottom"></div>
+</div>
+
+<!-- AFK MESSAGE -->
+<div id="cursorMessage"></div>
+
+
+<style>
+
+/* =============================== */
+/* HIDE DEFAULT CURSOR */
+/* =============================== */
+
+html,
+body,
+*,
+a,
+button,
+input,
+textarea,
+select {
+    cursor: none !important;
+}
+
+
+/* =============================== */
+/* BURGER */
+/* =============================== */
+
+#burgerCursor {
+    position: fixed;
+    width: 34px;
+    height: 30px;
+
+    pointer-events: none;
+    z-index: 999999;
+
+    transform: translate(-5px, -5px);
+
+    filter:
+        drop-shadow(0 0 7px #ff8c00)
+        drop-shadow(0 0 14px rgba(255,140,0,.6));
+}
+
+
+/* TOP */
+
+.burger-top {
+    position: absolute;
+
+    width: 30px;
+    height: 13px;
+
+    top: 0;
+    left: 2px;
+
+    background: linear-gradient(
+        135deg,
+        #ffb347,
+        #e87516
+    );
+
+    border-radius: 18px 18px 5px 5px;
+}
+
+
+/* SESAME */
+
+.burger-top::before {
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+    height: 2px;
+
+    top: 4px;
+    left: 7px;
+
+    background: #fff1c1;
+
+    border-radius: 50%;
+
+    box-shadow:
+        8px 2px #fff1c1,
+        15px -1px #fff1c1,
+        20px 3px #fff1c1;
+}
+
+
+/* CHEESE */
+
+.burger-cheese {
+    position: absolute;
+
+    width: 32px;
+    height: 5px;
+
+    top: 12px;
+    left: 1px;
+
+    background: #ffc400;
+
+    border-radius: 2px;
+}
+
+
+/* MEAT */
+
+.burger-meat {
+    position: absolute;
+
+    width: 31px;
+    height: 7px;
+
+    top: 16px;
+    left: 2px;
+
+    background: #3a2117;
+
+    border-radius: 3px;
+}
+
+
+/* BOTTOM */
+
+.burger-bottom {
+    position: absolute;
+
+    width: 29px;
+    height: 6px;
+
+    top: 23px;
+    left: 3px;
+
+    background: #d9791c;
+
+    border-radius: 2px 2px 8px 8px;
+}
+
+
+/* =============================== */
+/* ✨ SPARKLES */
+/* =============================== */
+
+.sparkle {
+    position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    pointer-events: none;
+
+    z-index: 999998;
+
+    background: #ffb000;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 5px #ff8c00,
+        0 0 10px #ff8c00;
+
+    animation: sparkleFade 700ms ease-out forwards;
+}
+
+
+@keyframes sparkleFade {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            scale(0)
+            translateY(15px)
+            rotate(180deg);
+    }
+}
+
+
+/* =============================== */
+/* AFK MESSAGE */
+/* =============================== */
+
+#cursorMessage {
+    position: fixed;
+
+    z-index: 1000000;
+
+    pointer-events: none;
+
+    max-width: 260px;
+
+    padding: 8px 13px;
+
+    background: white;
+
+    color: #151923;
+
+    border-radius:
+        12px 12px 12px 3px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 0 15px rgba(255,140,0,.35),
+        0 5px 20px rgba(0,0,0,.15);
+
+    opacity: 0;
+
+    transform:
+        translate(15px,15px)
+        scale(.8);
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+}
+
+
+#cursorMessage.show {
+    opacity: 1;
+
+    transform:
+        translate(15px,15px)
+        scale(1);
+}
+
+</style>
+
+
+<script>
+
+/* =============================== */
+/* CURSOR */
+/* =============================== */
+
+const burgerCursor =
+    document.getElementById("burgerCursor");
+
+const cursorMessage =
+    document.getElementById("cursorMessage");
+
+
+/* =============================== */
+/* POSITION */
+/* =============================== */
+
+let cursorX = 0;
+let cursorY = 0;
+
+
+/* =============================== */
+/* AFK */
+/* =============================== */
+
+let afkTimer;
+let messageTimer;
+
+let messageIndex = 0;
+
+
+/* =============================== */
+/* MESSAGES */
+/* =============================== */
+
+const cursorMessages = [
+
+    "Только не говори 67 🤡",
+
+    "Эй... ты ещё здесь? 👀",
+
+    "Может, заглянем в меню? 🍟",
+
+    "Ты так долго думаешь... 😭",
+
+    "Бургер уже ждёт тебя 🍔",
+
+    "Ну что, будем заказывать? 😏",
+
+    "Кажется, ты AFK 😴",
+
+    "Я всё ещё тут 👀",
+
+    "Может, чего-нибудь вкусного? 🔥",
+
+    "Ты точно ничего не хочешь? 🤨",
+
+    "CRAVECRAFT ждёт тебя 😎",
+
+    "Может, закажем что-нибудь? 🍔"
+
+];
+
+
+/* =============================== */
+/* MOUSE MOVE */
+/* =============================== */
+
+document.addEventListener(
+    "mousemove",
+    function(e) {
+
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+
+
+        /* MOVE BURGER */
+
+        burgerCursor.style.left =
+            cursorX + "px";
+
+        burgerCursor.style.top =
+            cursorY + "px";
+
+
+        /* MOVE MESSAGE */
+
+        cursorMessage.style.left =
+            cursorX + "px";
+
+        cursorMessage.style.top =
+            cursorY + "px";
+
+
+        /* ======================= */
+        /* ✨ CREATE SPARKLE */
+        /* ======================= */
+
+        const sparkle =
+            document.createElement("div");
+
+        sparkle.className = "sparkle";
+
+
+        /* RANDOM POSITION */
+
+        sparkle.style.left =
+            (
+                cursorX +
+                Math.random() * 14 -
+                7
+            ) + "px";
+
+        sparkle.style.top =
+            (
+                cursorY +
+                Math.random() * 14 -
+                7
+            ) + "px";
+
+
+        /* RANDOM SIZE */
+
+        const size =
+            Math.random() * 4 + 3;
+
+        sparkle.style.width =
+            size + "px";
+
+        sparkle.style.height =
+            size + "px";
+
+
+        /* ADD TO PAGE */
+
+        document.body.appendChild(sparkle);
+
+
+        /* DELETE AFTER ANIMATION */
+
+        setTimeout(
+            function() {
+                sparkle.remove();
+            },
+            700
+        );
+
+
+        /* ======================= */
+        /* RESET AFK */
+        /* ======================= */
+
+        cursorMessage.classList.remove("show");
+
+        clearTimeout(afkTimer);
+
+        clearInterval(messageTimer);
+
+
+        afkTimer =
+            setTimeout(
+                startAFK,
+                5000
+            );
+    }
+);
+
+
+/* =============================== */
+/* START AFK */
+/* =============================== */
+
+function startAFK() {
+
+    showMessage();
+
+
+    messageTimer =
+        setInterval(
+            function() {
+
+                showMessage();
+
+            },
+            5000
+        );
+}
+
+
+/* =============================== */
+/* SHOW MESSAGE */
+/* =============================== */
+
+function showMessage() {
+
+    cursorMessage.classList.remove("show");
+
+
+    setTimeout(
+        function() {
+
+            cursorMessage.textContent =
+                cursorMessages[messageIndex];
+
+
+            messageIndex++;
+
+
+            if (
+                messageIndex >=
+                cursorMessages.length
+            ) {
+
+                messageIndex = 0;
+
+            }
+
+
+            cursorMessage.style.left =
+                cursorX + "px";
+
+            cursorMessage.style.top =
+                cursorY + "px";
+
+
+            cursorMessage.classList.add("show");
+
+        },
+        150
+    );
+}
+
+
+/* =============================== */
+/* CLICK RESET */
+/* =============================== */
+
+document.addEventListener(
+    "mousedown",
+    function() {
+
+        cursorMessage.classList.remove("show");
+
+        clearTimeout(afkTimer);
+
+        clearInterval(messageTimer);
+
+
+        afkTimer =
+            setTimeout(
+                startAFK,
+                5000
+            );
+    }
+);
+
+
+/* =============================== */
+/* KEYBOARD RESET */
+/* =============================== */
+
+document.addEventListener(
+    "keydown",
+    function() {
+
+        cursorMessage.classList.remove("show");
+
+        clearTimeout(afkTimer);
+
+        clearInterval(messageTimer);
+
+
+        afkTimer =
+            setTimeout(
+                startAFK,
+                5000
+            );
+    }
+);
+
+
+/* =============================== */
+/* INITIAL AFK TIMER */
+/* =============================== */
+
+afkTimer =
+    setTimeout(
+        startAFK,
+        5000
+    );
+
+</script>
+
+
+
+
+
+</body>
+
+</html>

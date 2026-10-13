@@ -1,0 +1,4182 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CRAVECRAFT — Fast Food & Grill</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .orange-text {
+            background: linear-gradient(90deg, #f4510b, #ff8a00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal {
+            animation: modalOpen .22s ease;
+        }
+
+        @keyframes modalOpen {
+            from {
+                opacity: 0;
+                transform: scale(.94) translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .dynamic-text {
+            transition:
+                transform .7s ease-in-out,
+                opacity .7s ease-in-out;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .dynamic-text-up {
+            opacity: 0;
+            transform: translateY(-110%);
+        }
+
+        .dynamic-text-down {
+            opacity: 0;
+            transform: translateY(110%);
+        }
+
+        .dynamic-text-show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dynamic-style-1 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .dynamic-style-2 {
+            font-family: Georgia, "Times New Roman", serif;
+            letter-spacing: -2px;
+        }
+
+        .dynamic-style-3 {
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            letter-spacing: -1px;
+        }
+
+        .dynamic-style-4 {
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            font-style: italic;
+            letter-spacing: -3px;
+        }
+
+        .dynamic-style-5 {
+            font-family: "Courier New", monospace;
+            letter-spacing: -4px;
+        }
+
+        .hero-dynamic-area {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .menu-dynamic-area {
+            height: 105px;
+            overflow: hidden;
+        }
+
+        .services-dynamic-area {
+            height: 55px;
+            overflow: hidden;
+        }
+
+        .story-dynamic-area {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .contact-dynamic-area {
+            height: 100px;
+            overflow: hidden;
+        }
+
+        /* ================= 3D ================= */
+
+        .model-switch {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .model-photo,
+        .model-3d {
+            transition:
+                opacity .35s ease,
+                transform .35s ease;
+        }
+
+        .model-photo.hidden-3d,
+        .model-3d.hidden-3d {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+        }
+
+        .sketchfab-frame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .model-back-btn {
+            position: absolute;
+            z-index: 20;
+            left: 12px;
+            bottom: 12px;
+            border: 0;
+            border-radius: 10px;
+            background: rgba(0,0,0,.78);
+            color: white;
+            padding: 9px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+        }
+
+        .model-back-btn:hover {
+            background: #f4510b;
+        }
+
+        .dish-visual {
+            position: relative;
+        }
+
+        .dish-3d {
+            display: none;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 16px;
+            background: #111;
+        }
+
+        .dish-3d iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .dish-modal-3d-active .dish-photo,
+        .dish-modal-3d-active .dish-info {
+            display: none;
+        }
+
+        .dish-modal-3d-active .dish-3d {
+            display: block;
+        }
+
+        .dish-3d-button {
+            width: 100%;
+            margin-top: 12px;
+            border-radius: 12px;
+            background: #151923;
+            color: white;
+            padding: 12px;
+            font-size: 13px;
+            font-weight: 800;
+            transition: .2s;
+        }
+
+        .dish-3d-button:hover {
+            background: #f4510b;
+        }
+
+    </style>
+
+</head>
+
+
+
+<!-- ================= MUSIC PLAYER ================= -->
+
+
+<!-- ================= END MUSIC PLAYER ================= -->
+
+
+
+
+
+<body class="bg-[#f7f7f6] text-[#151923]">
+
+    <!-- LOADING SCREEN -->
+
+
+<!-- HEADER -->
+
+<header class="sticky top-0 z-50 h-[80px] border-b border-black/10 bg-white/95 backdrop-blur-xl">
+
+    <div class="mx-auto flex h-full max-w-[1450px] items-center justify-between px-8">
+
+        <a
+            href="index.html"
+            class="text-[23px] font-black tracking-tight">
+
+            CRAVE<span class="text-orange-500">CRAFT</span>
+
+        </a>
+
+        <nav class="hidden items-center gap-8 md:flex">
+
+            <a
+                href="index.html"
+                class="font-bold text-orange-500">
+
+                Главная
+
+            </a>
+
+            <a
+                href="menu.html"
+                class="font-semibold transition hover:text-orange-500">
+
+                Меню
+
+            </a>
+
+       <a
+                    href="Ani.html"
+                    class="font-semibold transition hover:text-orange-500">
+
+                    Анимацаия
+
+                </a>
+
+            <a
+                href="services.html"
+                class="font-semibold transition hover:text-orange-500">
+
+                Сервисы
+
+            </a>
+
+            <a
+                href="about.html"
+                class="font-semibold transition hover:text-orange-500">
+
+                О нас
+
+            </a>
+
+            <a
+                href="contacts.html"
+                class="font-semibold transition hover:text-orange-500">
+
+                Контакты
+
+            </a>
+
+        </nav>
+
+        <button
+            onclick="openModal('loginModal')"
+            class="rounded-xl bg-orange-500 px-6 py-3 text-sm font-black text-white transition hover:scale-105 hover:bg-orange-600">
+
+            Войти
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="min-h-[100vh] bg-[#fbfaf8] pt-[72px] mt-[-50px]">
+
+    <div
+        class="mx-auto grid min-h-[calc(100vh-72px)] max-w-[1450px] items-center gap-12 px-5 py-20 lg:grid-cols-2">
+
+        <div>
+
+            <div
+                class="mb-6 inline-flex items-center gap-2 rounded-full bg-orange-50 px-4 py-2 text-[14px] font-bold text-orange-600">
+
+                <span class="h-2 w-2 rounded-full bg-orange-500"></span>
+
+                Горячая крафтовая кухня · Доставка за 30 мин
+
+            </div>
+
+            <div
+                class="hero-dynamic-area max-w-[650px]"
+                onclick="changeDynamicText('heroDynamicText')">
+
+                <h2
+                    id="heroDynamicText"
+                    class="dynamic-text dynamic-style-1 dynamic-text-show text-[48px] font-black leading-[.94] tracking-[-3px] md:text-[65px]">
+
+                    Настоящий вкус
+
+                    <br>
+
+                    <span class="orange-text">
+                        сочного бургера
+                    </span>
+
+                    на
+
+                    <br>
+
+                    открытом огне
+
+                </h2>
+
+            </div>
+
+            <p
+                class="mt-7 max-w-[550px] text-[15px] leading-6 text-gray-500">
+
+                100% фермерская мраморная говядина,
+                домашние соусы по секретным рецептам,
+                воздушные булочки бриошь и золотистые
+                сайдлы без компромиссов.
+
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+
+                <a
+                    href="menu.html"
+                    class="rounded-xl bg-orange-500 px-7 py-4 text-[14px] font-bold text-white shadow-[0_10px_30px_rgba(255,90,0,.2)] transition hover:-translate-y-1">
+
+                    Открыть меню →
+
+                </a>
+
+                <button
+                    onclick="openModal('cartModal')"
+                    class="rounded-xl border border-gray-200 bg-white px-7 py-4 text-[14px] font-bold">
+
+                    🛒 Мой заказ
+                    (<span id="heroCartCount">0</span>)
+
+                </button>
+
+            </div>
+
+            <div
+                class="mt-9 flex flex-wrap gap-7 border-t border-gray-200 pt-6">
+
+                <div class="flex items-center gap-2">
+
+                    <div
+                        class="flex h-8 w-8 items-center justify-center rounded-full bg-orange-400 text-[12px] font-bold text-white">
+
+                        15K
+
+                    </div>
+
+                    <div>
+
+                        <p class="text-[13px] font-black">
+                            Более 15 000
+                        </p>
+
+                        <p class="text-[12px] text-gray-400">
+                            довольных гостей
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="flex items-center gap-2">
+
+                    <span class="text-green-500">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <p class="text-[13px] font-bold">
+                            Бесплатная доставка
+                        </p>
+
+                        <p class="text-[12px] text-gray-400">
+                            от 99 000 Сум
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HERO 3D -->
+
+        <div class="relative">
+
+            <div
+                class="absolute -inset-6 rounded-[35px] bg-orange-200/30 blur-[50px]">
+            </div>
+
+            <div
+                class="relative h-[450px] overflow-hidden rounded-[22px] border-[5px] border-white shadow-[0_25px_60px_rgba(0,0,0,.15)]">
+
+                <div
+                    id="heroPhoto"
+                    class="model-photo h-full">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=85"
+                        alt="Сочный бургер"
+                        onclick="toggleHero3D()"
+                        class="h-full w-full cursor-pointer object-cover">
+
+                    <button
+                        onclick="toggleHero3D()"
+                        class="absolute bottom-5 left-5 rounded-xl bg-black/75 px-4 py-3 text-[12px] font-bold text-white backdrop-blur-md transition hover:bg-orange-500">
+
+                        🧊 Открыть 3D
+
+                    </button>
+
+                    <div
+                        class="absolute bottom-5 right-5 flex items-center justify-between rounded-2xl bg-white/95 p-4 shadow-xl">
+
+                        <div>
+
+                            <p class="text-[12px] font-bold text-gray-400">
+                                ХИТ НЕДЕЛИ
+                            </p>
+
+                            <p class="text-[13px] font-black">
+                                Дабл Смок Бекон
+                            </p>
+
+                            <p class="text-[13px] text-gray-400">
+                                54 000 Сум
+                            </p>
+
+                        </div>
+
+                        <div
+                            class="ml-5 flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50">
+
+                            🔥
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="hero3D"
+                    class="model-3d hidden-3d h-full bg-black">
+
+                    <iframe
+                        class="sketchfab-frame"
+                        title="Burger"
+                        frameborder="0"
+                        allowfullscreen
+                        allow="autoplay; fullscreen; xr-spatial-tracking"
+                        xr-spatial-tracking
+                        execution-while-out-of-viewport
+                        execution-while-not-rendered
+                        web-share
+                        src="https://sketchfab.com/models/6fb7c9aa48ff42e08aae418223140117/embed">
+                    </iframe>
+
+                    <button
+                        onclick="toggleHero3D()"
+                        class="model-back-btn">
+
+                        ← Вернуть фото
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MENU -->
+
+<section
+    class="min-h-[100vh] border-t border-gray-200 bg-white px-5 py-24">
+
+    <div class="mx-auto max-w-[1450px]">
+
+        <div class="text-center">
+
+            <span
+                class="rounded-full bg-orange-50 px-4 py-2 text-[12px] font-black uppercase text-orange-500">
+
+                Наше меню
+
+            </span>
+
+            <div
+                class="menu-dynamic-area mt-5"
+                onclick="changeDynamicText('menuDynamicText')">
+
+                <h2
+                    id="menuDynamicText"
+                    class="dynamic-text dynamic-style-1 dynamic-text-show text-[36px] font-black leading-none md:text-[45px]">
+
+                    От бургеров до освежающих
+
+                    <br>
+
+                    напитков
+
+                </h2>
+
+            </div>
+
+            <p
+                class="mx-auto mt-5 max-w-[600px] text-[14px] leading-5 text-gray-400">
+
+                Каждое блюдо готовится под заказ.
+                Выбирайте любимые блюда и добавляйте их
+                в корзину.
+
+            </p>
+
+        </div>
+
+
+        <div class="mt-9 flex flex-wrap justify-center gap-2">
+
+            <button
+                class="rounded-lg bg-orange-500 px-5 py-3 text-[13px] font-bold text-white">
+
+                🍔 Все блюда
+
+            </button>
+
+            <a
+                href="menu.html"
+                class="rounded-lg border border-gray-200 px-5 py-3 text-[13px] font-bold">
+
+                Бургеры
+
+            </a>
+
+            <a
+                href="menu.html"
+                class="rounded-lg border border-gray-200 px-5 py-3 text-[13px] font-bold">
+
+                Картошка фри
+
+            </a>
+
+            <a
+                href="menu.html"
+                class="rounded-lg border border-gray-200 px-5 py-3 text-[13px] font-bold">
+
+                Наггетсы & Крылья
+
+            </a>
+
+            <a
+                href="menu.html"
+                class="rounded-lg border border-gray-200 px-5 py-3 text-[13px] font-bold">
+
+                Напитки
+
+            </a>
+
+        </div>
+
+
+        <div
+            class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+
+            <!-- BURGER -->
+
+            <div
+                class="overflow-hidden rounded-2xl border border-gray-200 bg-white transition hover:-translate-y-2 hover:shadow-xl">
+
+                <div class="relative h-[220px]">
+
+                    <div
+                        id="burgerCardPhoto"
+                        class="model-photo h-full">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+                            class="h-full w-full cursor-pointer object-cover"
+                            alt="Бургер"
+                            onclick="toggleBurgerCard3D()">
+
+                        <button
+                            onclick="toggleBurgerCard3D()"
+                            class="absolute bottom-3 left-3 rounded-lg bg-black/75 px-3 py-2 text-[11px] font-bold text-white backdrop-blur-md">
+
+                            🧊 3D
+
+                        </button>
+
+                        <span
+                            class="absolute left-3 top-3 rounded-md bg-orange-500 px-3 py-1 text-[11px] font-bold text-white">
+
+                            ГРИЛЬ
+
+                        </span>
+
+                        <button
+                            class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white">
+
+                            ♡
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="burgerCard3D"
+                        class="model-3d hidden-3d h-full bg-black">
+
+                        <iframe
+                            class="sketchfab-frame"
+                            title="BigMac"
+                            frameborder="0"
+                            allowfullscreen
+                            allow="autoplay; fullscreen; xr-spatial-tracking"
+                            xr-spatial-tracking
+                            execution-while-out-of-viewport
+                            execution-while-not-rendered
+                            web-share
+                            src="https://sketchfab.com/models/807a47ff7cae492c8a09e2b3101db241/embed">
+                        </iframe>
+
+                        <button
+                            onclick="toggleBurgerCard3D()"
+                            class="model-back-btn">
+
+                            ← Фото
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="p-4">
+
+                    <span
+                        class="rounded bg-orange-50 px-2 py-1 text-[11px] font-bold text-orange-500">
+
+                        ХИТ НЕДЕЛИ
+
+                    </span>
+
+                    <h3 class="mt-3 text-[14px] font-black">
+                        Дабл Смок Чизбургер
+                    </h3>
+
+                    <p class="mt-2 text-[13px] leading-4 text-gray-400">
+
+                        Двойная сочная котлета,
+                        бекон и расплавленный сыр.
+
+                    </p>
+
+                    <div
+                        class="mt-5 flex items-center justify-between">
+
+                        <p class="text-[18px] font-black">
+                            50 000 Сум
+                        </p>
+
+                        <button
+                            onclick="openDish('burgerModal')"
+                            class="rounded-lg bg-orange-500 px-4 py-3 text-[12px] font-bold text-white">
+
+                            + В корзину
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FRIES -->
+
+            <div
+                class="overflow-hidden rounded-2xl border border-gray-200 bg-white transition hover:-translate-y-2 hover:shadow-xl">
+
+                <div class="relative h-[220px]">
+
+                    <div
+                        id="friesCardPhoto"
+                        class="model-photo h-full">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=85"
+                            class="h-full w-full cursor-pointer object-cover"
+                            alt="Картофель фри"
+                            onclick="toggleFriesCard3D()">
+
+                        <button
+                            onclick="toggleFriesCard3D()"
+                            class="absolute bottom-3 left-3 rounded-lg bg-black/75 px-3 py-2 text-[11px] font-bold text-white backdrop-blur-md">
+
+                            🧊 3D
+
+                        </button>
+
+                        <span
+                            class="absolute left-3 top-3 rounded-md bg-orange-500 px-3 py-1 text-[11px] font-bold text-white">
+
+                            ГАРНИР
+
+                        </span>
+
+                        <button
+                            class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white">
+
+                            ♡
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="friesCard3D"
+                        class="model-3d hidden-3d h-full bg-black">
+
+                        <iframe
+                            class="sketchfab-frame"
+                            title="French Fries"
+                            frameborder="0"
+                            allowfullscreen
+                            allow="autoplay; fullscreen; xr-spatial-tracking"
+                            xr-spatial-tracking
+                            execution-while-out-of-viewport
+                            execution-while-not-rendered
+                            web-share
+                            src="https://sketchfab.com/models/c00390a24a3a4c7184fba339c4b13ca6/embed">
+                        </iframe>
+
+                        <button
+                            onclick="toggleFriesCard3D()"
+                            class="model-back-btn">
+
+                            ← Фото
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="p-4">
+
+                    <span
+                        class="rounded bg-orange-50 px-2 py-1 text-[11px] font-bold text-orange-500">
+
+                        ПОПУЛЯРНОЕ
+
+                    </span>
+
+                    <h3 class="mt-3 text-[14px] font-black">
+                        Артисан Фри
+                    </h3>
+
+                    <p class="mt-2 text-[13px] leading-4 text-gray-400">
+
+                        Хрустящий картофель
+                        с фирменным чесночным дипом.
+
+                    </p>
+
+                    <div class="mt-5 flex items-center justify-between">
+
+                        <p class="text-[18px] font-black">
+                            45 000 Сум
+                        </p>
+
+                        <button
+                            onclick="openDish('friesModal')"
+                            class="rounded-lg bg-orange-500 px-4 py-3 text-[12px] font-bold text-white">
+
+                            + В корзину
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NUGGETS -->
+
+            <div
+                class="overflow-hidden rounded-2xl border border-gray-200 bg-white transition hover:-translate-y-2 hover:shadow-xl">
+
+                <div class="relative h-[220px]">
+
+                    <div
+                        id="nuggetsCardPhoto"
+                        class="model-photo h-full">
+
+                        <img
+                            src="./Background (1).png"
+                            class="h-full w-full cursor-pointer object-cover"
+                            alt="Курица"
+                            onclick="toggleNuggetsCard3D()">
+
+                        <button
+                            onclick="toggleNuggetsCard3D()"
+                            class="absolute bottom-3 left-3 rounded-lg bg-black/75 px-3 py-2 text-[11px] font-bold text-white backdrop-blur-md">
+
+                            🧊 3D
+
+                        </button>
+
+                        <span
+                            class="absolute left-3 top-3 rounded-md bg-orange-500 px-3 py-1 text-[11px] font-bold text-white">
+
+                            КУРИЦА
+
+                        </span>
+
+                        <button
+                            class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white">
+
+                            ♡
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="nuggetsCard3D"
+                        class="model-3d hidden-3d h-full bg-black">
+
+                        <iframe
+                            class="sketchfab-frame"
+                            title="Chicken McCrispy"
+                            frameborder="0"
+                            allowfullscreen
+                            allow="autoplay; fullscreen; xr-spatial-tracking"
+                            xr-spatial-tracking
+                            execution-while-out-of-viewport
+                            execution-while-not-rendered
+                            web-share
+                            src="https://sketchfab.com/models/adae9027cf8143afba558c8ebfb44ac9/embed">
+                        </iframe>
+
+                        <button
+                            onclick="toggleNuggetsCard3D()"
+                            class="model-back-btn">
+
+                            ← Фото
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="p-4">
+
+                    <span
+                        class="rounded bg-green-50 px-2 py-1 text-[11px] font-bold text-green-600">
+
+                        ФЕРМЕРСКАЯ
+
+                    </span>
+
+                    <h3 class="mt-3 text-[14px] font-black">
+                        Кранч Наггетсы
+                    </h3>
+
+                    <p class="mt-2 text-[13px] leading-4 text-gray-400">
+
+                        Хрустящие куриные кусочки
+                        с двумя фирменными соусами.
+
+                    </p>
+
+                    <div class="mt-5 flex items-center justify-between">
+
+                        <p class="text-[18px] font-black">
+                            65 000 Сум
+                        </p>
+
+                        <button
+                            onclick="openDish('nuggetsModal')"
+                            class="rounded-lg bg-orange-500 px-4 py-3 text-[12px] font-bold text-white">
+
+                            + В корзину
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DRINK -->
+
+            <div
+                class="overflow-hidden rounded-2xl border border-gray-200 bg-white transition hover:-translate-y-2 hover:shadow-xl">
+
+                <div class="relative h-[220px]">
+
+                    <div
+                        id="drinkCardPhoto"
+                        class="model-photo h-full">
+
+                        <img
+                            src="./Крафтовый лимонад и кола со льдом.png"
+                            class="h-full w-full cursor-pointer object-cover"
+                            alt="Лимонад"
+                            onclick="toggleDrinkCard3D()">
+
+                        <button
+                            onclick="toggleDrinkCard3D()"
+                            class="absolute bottom-3 left-3 rounded-lg bg-black/75 px-3 py-2 text-[11px] font-bold text-white backdrop-blur-md">
+
+                            🧊 3D
+
+                        </button>
+
+                        <span
+                            class="absolute left-3 top-3 rounded-md bg-sky-500 px-3 py-1 text-[11px] font-bold text-white">
+
+                            ICE DRINKS
+
+                        </span>
+
+                        <button
+                            class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white">
+
+                            ♡
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="drinkCard3D"
+                        class="model-3d hidden-3d h-full bg-black">
+
+                        <iframe
+                            class="sketchfab-frame"
+                            title="Lime-Lemonade"
+                            frameborder="0"
+                            allowfullscreen
+                            allow="autoplay; fullscreen; xr-spatial-tracking"
+                            xr-spatial-tracking
+                            execution-while-out-of-viewport
+                            execution-while-not-rendered
+                            web-share
+                            src="https://sketchfab.com/models/785bfba600ed449195b8bcd36af01394/embed">
+                        </iframe>
+
+                        <button
+                            onclick="toggleDrinkCard3D()"
+                            class="model-back-btn">
+
+                            ← Фото
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="p-4">
+
+                    <span
+                        class="rounded bg-blue-50 px-2 py-1 text-[11px] font-bold text-blue-500">
+
+                        ХОЛОДНЫЙ
+
+                    </span>
+
+                    <h3 class="mt-3 text-[14px] font-black">
+                        Крафт Лимонад
+                    </h3>
+
+                    <p class="mt-2 text-[13px] leading-4 text-gray-400">
+
+                        Натуральный цитрусовый лимонад,
+                        лёд и свежая мята.
+
+                    </p>
+
+                    <div class="mt-5 flex items-center justify-between">
+
+                        <p class="text-[18px] font-black">
+                            35 000 Сум
+                        </p>
+
+                        <button
+                            onclick="openDish('drinkModal')"
+                            class="rounded-lg bg-orange-500 px-4 py-3 text-[12px] font-bold text-white">
+
+                            + В корзину
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="mt-10 text-center">
+
+            <a
+                href="menu.html"
+                class="inline-block rounded-xl border border-gray-200 px-8 py-4 text-[14px] font-bold transition hover:border-orange-500 hover:text-orange-500">
+
+                Смотреть всё меню →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="min-h-[100vh] bg-[#f7f7f6] px-5 py-24">
+
+    <div class="mx-auto max-w-[1450px]">
+
+        <div class="text-center">
+
+            <span
+                class="rounded-full bg-orange-50 px-4 py-2 text-[12px] font-black uppercase text-orange-500">
+
+                Наш сервис
+
+            </span>
+
+            <div
+                class="services-dynamic-area mt-5"
+                onclick="changeDynamicText('servicesDynamicText')">
+
+                <h2
+                    id="servicesDynamicText"
+                    class="dynamic-text dynamic-style-1 dynamic-text-show text-[36px] font-black">
+
+                    Быстро, горячо и технологично
+
+                </h2>
+
+            </div>
+
+            <p class="mt-3 text-[14px] text-gray-400">
+
+                Всё продумано для вашего максимального удобства.
+
+            </p>
+
+        </div>
+
+
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+
+            <div
+                class="rounded-2xl border border-gray-200 bg-white p-7 transition hover:-translate-y-2 hover:shadow-xl">
+
+                <div
+                    class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-50 text-xl">
+
+                    ⚡
+
+                </div>
+
+                <h3 class="text-[14px] font-black">
+                    Экспресс-доставка за 30 мин
+                </h3>
+
+                <p class="mt-3 text-[13px] leading-5 text-gray-400">
+
+                    Горячую картошку, булочки и блюда
+                    с гриля привезём прямо к вашей двери.
+
+                </p>
+
+            </div>
+
+
+            <div
+                class="rounded-2xl border border-gray-200 bg-white p-7 transition hover:-translate-y-2 hover:shadow-xl">
+
+                <div
+                    class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-50 text-xl">
+
+                    🚗
+
+                </div>
+
+                <h3 class="text-[14px] font-black">
+                    Drive & Takeaway
+                </h3>
+
+                <p class="mt-3 text-[13px] leading-5 text-gray-400">
+
+                    Закажите онлайн и заберите готовый
+                    заказ без очереди.
+
+                </p>
+
+            </div>
+
+
+            <div
+                class="rounded-2xl border border-gray-200 bg-white p-7 transition hover:-translate-y-2 hover:shadow-xl">
+
+                <div
+                    class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-green-50 text-xl">
+
+                    🥬
+
+                </div>
+
+                <h3 class="text-[14px] font-black">
+                    Качество ингредиентов
+                </h3>
+
+                <p class="mt-3 text-[13px] leading-5 text-gray-400">
+
+                    Отборные продукты, свежие овощи
+                    и собственные рецепты.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="mt-8 grid overflow-hidden rounded-[25px] bg-[#1c1b1a] lg:grid-cols-2">
+
+            <div class="p-10 text-white lg:p-14">
+
+                <span
+                    class="rounded-full bg-orange-500/10 px-4 py-2 text-[12px] font-bold text-orange-500">
+
+                    CRAVECRAFT
+
+                </span>
+
+                <div
+                    class="story-dynamic-area mt-6"
+                    onclick="changeDynamicText('storyDynamicText')">
+
+                    <h3
+                        id="storyDynamicText"
+                        class="dynamic-text dynamic-style-1 dynamic-text-show text-[38px] font-black leading-none">
+
+                        Мы не просто готовим
+                        фастфуд.
+
+                        <br>
+
+                        Мы создаём
+
+                        <span class="text-orange-500">
+                            гастрономический культ.
+                        </span>
+
+                    </h3>
+
+                </div>
+
+                <p class="mt-6 text-[14px] leading-6 text-gray-400">
+
+                    Быстрый перекус должен быть таким же
+                    качественным и вкусным, как блюдо
+                    из хорошего ресторана.
+
+                </p>
+
+                <div class="mt-9 grid grid-cols-3 gap-5">
+
+                    <div>
+
+                        <p class="text-[27px] font-black text-orange-500">
+                            12+
+                        </p>
+
+                        <p class="text-[11px] text-gray-500">
+                            РЕСТОРАНОВ
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <p class="text-[27px] font-black text-yellow-400">
+                            100%
+                        </p>
+
+                        <p class="text-[11px] text-gray-500">
+                            КАЧЕСТВО
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <p class="text-[27px] font-black text-green-400">
+                            4.9
+                        </p>
+
+                        <p class="text-[11px] text-gray-500">
+                            РЕЙТИНГ
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <img
+                src="https://images.unsplash.com/photo-1626082927389-6cd09c1a4d9f?auto=format&fit=crop&w=1200&q=85"
+                alt="Блюдо CRAVECRAFT"
+                class="h-full min-h-[400px] w-full object-cover">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="min-h-[100vh] bg-white px-5 py-24">
+
+    <div class="mx-auto grid max-w-[1450px] gap-12 lg:grid-cols-2">
+
+        <div>
+
+            <span
+                class="rounded-full bg-orange-50 px-4 py-2 text-[12px] font-black uppercase text-orange-500">
+
+                Свяжитесь с нами
+
+            </span>
+
+            <div
+                class="contact-dynamic-area mt-6 max-w-[550px]"
+                onclick="changeDynamicText('contactDynamicText')">
+
+                <h2
+                    id="contactDynamicText"
+                    class="dynamic-text dynamic-style-1 dynamic-text-show text-[40px] font-black leading-none">
+
+                    Ждём вас в гости
+
+                    <br>
+
+                    или привезём заказ
+
+                </h2>
+
+            </div>
+
+            <p
+                class="mt-5 max-w-[500px] text-[14px] leading-5 text-gray-400">
+
+                Есть вопросы по заказу, доставке или
+                партнёрству? Напишите нам.
+
+            </p>
+
+            <div class="mt-8 rounded-2xl border border-gray-200 p-5">
+
+                <div class="flex gap-4">
+
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50">
+
+                        📍
+
+                    </div>
+
+                    <div>
+
+                        <p class="text-[11px] font-bold text-gray-400">
+                            ГЛАВНЫЙ РЕСТОРАН
+                        </p>
+
+                        <p class="mt-1 text-[14px] font-bold">
+                            г. Ташкент, ул. Амир Темур, 15
+                        </p>
+
+                        <p class="mt-1 text-[11px] text-gray-400">
+                            Ежедневно с 10:00 до 02:00
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="mt-3 rounded-2xl border border-gray-200 p-5">
+
+                <div class="flex gap-4">
+
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-xl bg-green-50">
+
+                        📞
+
+                    </div>
+
+                    <div>
+
+                        <p class="text-[11px] font-bold text-gray-400">
+                            ТЕЛЕФОН ДОСТАВКИ
+                        </p>
+
+                        <p class="mt-1 text-[14px] font-bold">
+                            +998 71 555 35 37
+                        </p>
+
+                        <p class="mt-1 text-[11px] text-gray-400">
+                            Ежедневно
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="rounded-[22px] border border-gray-200 p-7 shadow-sm">
+
+            <h3 class="text-[18px] font-black">
+                Напишите нам
+            </h3>
+
+            <form
+                onsubmit="sendMessage(event)"
+                class="mt-7 space-y-4">
+
+                <div class="grid gap-4 sm:grid-cols-2">
+
+                    <input
+                        required
+                        type="text"
+                        placeholder="Ваше имя"
+                        class="h-11 rounded-lg border border-gray-200 px-4 text-[13px] outline-none focus:border-orange-500">
+
+                    <input
+                        required
+                        type="tel"
+                        placeholder="+998 90 000 00 00"
+                        class="h-11 rounded-lg border border-gray-200 px-4 text-[13px] outline-none focus:border-orange-500">
+
+                </div>
+
+                <select
+                    class="h-11 w-full rounded-lg border border-gray-200 px-4 text-[13px] outline-none focus:border-orange-500">
+
+                    <option>Отзыв по заказу</option>
+                    <option>Доставка</option>
+                    <option>Партнёрство</option>
+                    <option>Другое</option>
+
+                </select>
+
+                <textarea
+                    required
+                    placeholder="Ваше сообщение..."
+                    class="h-[130px] w-full resize-none rounded-lg border border-gray-200 p-4 text-[13px] outline-none focus:border-orange-500"></textarea>
+
+                <label
+                    class="flex items-center gap-2 text-[11px] text-gray-400">
+
+                    <input required type="checkbox">
+
+                    Согласен с обработкой данных
+
+                </label>
+
+                <button
+                    class="w-full rounded-lg bg-orange-500 py-4 text-[13px] font-bold text-white hover:bg-orange-600">
+
+                    Отправить сообщение
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+<!-- CRAVECRAFT MINI PORTAL -->
+
+<style>
+#cc-mini-portal {
+    padding: 70px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    
+    overflow: hidden;
+}
+
+#cc-mini-portal .portal-circle {
+    width: 300px;
+    height: 300px;
+    max-width: 85vw;
+    max-height: 85vw;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid #ff7417;
+    box-shadow: 0 0 25px #ff6500,
+                0 0 65px rgba(255, 85, 0, .35);
+    isolation: isolate;
+}
+
+#cc-mini-portal iframe {
+    position: absolute;
+    width: 1200px;
+    height: 900px;
+    max-width: none;
+    border: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.25);
+    transform-origin: center;
+    pointer-events: none;
+}
+
+#cc-mini-portal .portal-ring {
+    position: absolute;
+    inset: -2px;
+    border: 4px solid transparent;
+    border-top-color: #ffb06a;
+    border-bottom-color: #ff4d00;
+    border-radius: 50%;
+    box-shadow: inset 0 0 20px #ff6500;
+    pointer-events: none;
+    animation: ccRingSpin 5s linear infinite;
+    z-index: 2;
+}
+
+#cc-mini-portal .portal-label {
+    color: #ff8b3d;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+#cc-mini-portal .portal-circle:hover {
+    box-shadow: 0 0 35px #ff6500,
+                0 0 90px rgba(255, 85, 0, .6);
+}
+
+@keyframes ccRingSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* ПЕРЕХОД КАМЕРЫ */
+
+#cc-portal-flight {
+    position: fixed;
+    z-index: 999999;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: #050505;
+    overflow: hidden;
+}
+
+#cc-portal-flight.active {
+    display: flex;
+}
+
+#cc-portal-flight .flight-circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    border: 4px solid #ff7417;
+    box-shadow: 0 0 35px #ff6500,
+                0 0 100px #ff4500;
+}
+
+#cc-portal-flight iframe {
+    width: 1200px;
+    height: 900px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 0;
+    transform: translate(-50%, -50%) scale(.25);
+    transform-origin: center;
+    pointer-events: none;
+}
+
+#cc-portal-flight.active .flight-circle {
+    animation: ccFlyIntoPortal 1.5s cubic-bezier(.5, 0, .8, .4) forwards;
+}
+
+@keyframes ccFlyIntoPortal {
+    0% {
+        transform: scale(1);
+        border-radius: 50%;
+    }
+    70% {
+        border-radius: 35%;
+    }
+    100% {
+        transform: scale(var(--cc-flight-scale));
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    #cc-mini-portal .portal-circle {
+        width: 280px;
+        height: 280px;
+    }
+}
+</style>
+
+<section id="cc-mini-portal">
+
+    <div class="portal-circle" onclick="ccOpenMenuPortal()">
+        <iframe src="menu.html" title="CRAVECRAFT Menu"></iframe>
+        <div class="portal-ring"></div>
+    </div>
+
+    <div class="portal-label">
+        ENTER THE CRAVECRAFT WORLD
+    </div>
+
+</section>
+
+<div id="cc-portal-flight">
+    <div class="flight-circle">
+        <iframe src="menu.html" title="Menu transition"></iframe>
+    </div>
+</div>
+
+<script>
+function ccOpenMenuPortal() {
+    const flight = document.getElementById("cc-portal-flight");
+    const circle = flight.querySelector(".flight-circle");
+
+    const diagonal = Math.hypot(
+        window.innerWidth,
+        window.innerHeight
+    );
+
+    flight.style.setProperty(
+        "--cc-flight-scale",
+        diagonal / 300 + 2
+    );
+
+    flight.classList.add("active");
+
+    setTimeout(() => {
+        window.location.href = "menu.html";
+    }, 1350);
+}
+</script>
+
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="bg-[#171615] px-5 py-14 text-white">
+
+    <div
+        class="mx-auto flex max-w-[1450px] flex-col justify-between gap-10 md:flex-row">
+
+        <div>
+
+            <h2 class="text-[20px] font-black">
+
+                CRAVE<span class="text-orange-500">
+                    CRAFT
+                </span>
+
+            </h2>
+
+            <p
+                class="mt-3 max-w-[280px] text-[13px] leading-5 text-gray-500">
+
+                Fast Food & Grill нового поколения.
+                Настоящий вкус без компромиссов.
+
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <p class="text-[14px] font-bold">
+                Навигация
+            </p>
+
+            <div class="mt-4 space-y-2">
+
+                <a href="index.html"
+                    class="block text-[13px] text-gray-500 hover:text-orange-500">
+                    Главная
+                </a>
+
+                <a href="menu.html"
+                    class="block text-[13px] text-gray-500 hover:text-orange-500">
+                    Меню
+                </a>
+
+                <a href="services.html"
+                    class="block text-[13px] text-gray-500 hover:text-orange-500">
+                    Сервисы
+                </a>
+
+                <a href="about.html"
+                    class="block text-[13px] text-gray-500 hover:text-orange-500">
+                    О нас
+                </a>
+
+                <a href="contacts.html"
+                    class="block text-[13px] text-gray-500 hover:text-orange-500">
+                    Контакты
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <p class="text-[14px] font-bold">
+                Контакты
+            </p>
+
+            <div class="mt-4 space-y-2 text-[13px] text-gray-500">
+
+                <p>
+                    📍 Ташкент, Амир Темур 15
+                </p>
+
+                <p>
+                    📞 +998 71 555 35 37
+                </p>
+
+                <p>
+                    ✉ hello@cravecraft.uz
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="mx-auto mt-10 max-w-[1450px] border-t border-white/10 pt-5 text-center text-[11px] text-gray-600">
+
+        © 2026 CRAVECRAFT. Все права защищены.
+
+    </div>
+
+</footer>
+
+
+<!-- LOGIN MODAL -->
+
+<div
+    id="loginModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/75 p-1">
+
+    <div
+        class="modal relative h-[800px] w-full max-w-[500px] rounded-[34px] bg-white px-10 py-11 shadow-2xl">
+
+        <button
+            onclick="closeModal('loginModal')"
+            class="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-[#f1f2f4] text-[25px] font-light text-[#151923] transition hover:bg-gray-200">
+
+            ×
+
+        </button>
+
+        <div class="flex justify-center">
+
+            <div
+                class="flex h-[74px] w-[74px] items-center justify-center rounded-[20px] bg-[#ff6900] text-[38px]">
+
+                👤
+
+            </div>
+
+        </div>
+
+        <div class="mt-8 text-center">
+
+            <h2
+                class="text-[34px] font-black tracking-[-1.5px] text-[#151923]">
+
+                Войти в CRAVECRAFT
+
+            </h2>
+
+            <p class="mt-2 text-[15px] text-[#7b8498]">
+
+                Войди, чтобы сохранять свои заказы
+
+            </p>
+
+        </div>
+
+        <form onsubmit="login(event)" class="mt-10">
+
+            <label class="block">
+
+                <span class="text-[15px] font-bold text-[#151923]">
+                    Gmail / Email
+                </span>
+
+                <input
+                    required
+                    type="email"
+                    value="khasanovyusuf01@gmail.com"
+                    placeholder="Введите Gmail / Email"
+                    class="mt-3 h-[61px] w-full rounded-[14px] border border-[#dce1ea] bg-[#e8f0ff] px-5 text-[17px] text-[#151923] outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20">
+
+            </label>
+
+            <label class="mt-6 block">
+
+                <span class="text-[15px] font-bold text-[#151923]">
+                    Пароль
+                </span>
+
+                <input
+                    required
+                    type="password"
+                    value="1234567890"
+                    placeholder="Введите пароль"
+                    class="mt-3 h-[61px] w-full rounded-[14px] border border-[#dce1ea] bg-[#e8f0ff] px-5 text-[17px] text-[#151923] outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20">
+
+            </label>
+
+            <div class="mt-4 text-right">
+
+                <button
+                    type="button"
+                    onclick="forgotPassword()"
+                    class="text-[15px] font-bold text-orange-500 transition hover:text-orange-600">
+
+                    Забыли пароль?
+
+                </button>
+
+            </div>
+
+            <button
+                type="submit"
+                class="mt-7 h-[63px] w-full rounded-[15px] bg-[#ff6900] text-[17px] font-black text-white transition hover:bg-[#f45d00] hover:shadow-[0_10px_30px_rgba(255,105,0,.25)]">
+
+                Войти
+
+            </button>
+
+            <div class="my-8 flex items-center gap-4">
+
+                <div class="h-px flex-1 bg-[#dfe2e8]"></div>
+
+                <span class="text-[14px] font-semibold text-[#a0a8b8]">
+                    или
+                </span>
+
+                <div class="h-px flex-1 bg-[#dfe2e8]"></div>
+
+            </div>
+
+            <button
+                type="button"
+                onclick="googleLogin()"
+                class="flex h-[69px] w-full items-center justify-center gap-3 rounded-[14px] border border-[#dfe2e8] bg-white text-[17px] font-bold text-[#151923] transition hover:bg-gray-50">
+
+                <span class="text-[24px] font-black">
+                    G
+                </span>
+
+                <span>
+                    Продолжить через Google
+                </span>
+
+            </button>
+
+            <p
+                class="mt-8 text-center text-[13px] leading-5 text-[#9ba5b7]">
+
+                Продолжая, вы соглашаетесь с условиями
+                использования CRAVECRAFT.
+
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- CART MODAL -->
+
+<div
+    id="cartModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 p-5">
+
+    <div
+        class="modal w-full max-w-[500px] rounded-[24px] bg-white p-7 shadow-2xl">
+
+        <div class="flex items-center justify-between">
+
+            <h2 class="text-[26px] font-black">
+                🛒 Мой заказ
+            </h2>
+
+            <button
+                onclick="closeModal('cartModal')"
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-xl">
+
+                ×
+
+            </button>
+
+        </div>
+
+        <div id="cartContent" class="mt-6">
+
+            <div class="rounded-xl bg-gray-50 p-6 text-center">
+
+                <div class="text-4xl">
+                    🛒
+                </div>
+
+                <p class="mt-3 font-bold">
+                    Корзина пуста
+                </p>
+
+                <p class="mt-1 text-sm text-gray-400">
+                    Добавьте что-нибудь вкусное!
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BURGER MODAL -->
+
+<div
+    id="burgerModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 p-5">
+
+    <div
+        class="modal w-full max-w-[500px] rounded-[24px] bg-white p-7 shadow-2xl">
+
+        <div class="flex items-center justify-between">
+
+            <h2 class="text-[24px] font-black">
+                Дабл Смок Чизбургер
+            </h2>
+
+            <button
+                onclick="closeModal('burgerModal')"
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-xl">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="burgerModalVisual"
+            class="dish-visual mt-5">
+
+            <div class="dish-photo">
+
+                <img
+                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+                    class="h-[230px] w-full cursor-pointer rounded-2xl object-cover"
+                    alt="Бургер"
+                    onclick="toggleBurgerModal3D()">
+
+                <button
+                    onclick="toggleBurgerModal3D()"
+                    class="dish-3d-button">
+
+                    🧊 Посмотреть в 3D
+
+                </button>
+
+            </div>
+
+
+            <div class="dish-3d">
+
+                <iframe
+                    title="Realistic Burger"
+                    frameborder="0"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; xr-spatial-tracking"
+                    xr-spatial-tracking
+                    execution-while-out-of-viewport
+                    execution-while-not-rendered
+                    web-share
+                    src="https://sketchfab.com/models/1f3e42de8f7a4b308067ad92147e269a/embed">
+                </iframe>
+
+                <button
+                    onclick="toggleBurgerModal3D()"
+                    class="model-back-btn">
+
+                    ← Вернуть фото
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="dish-info">
+
+            <p class="mt-5 text-sm leading-6 text-gray-500">
+
+                Двойная сочная говяжья котлета,
+                хрустящий бекон, расплавленный сыр
+                и фирменный соус CRAVECRAFT.
+
+            </p>
+
+            <div class="mt-6 flex items-center justify-between">
+
+                <span class="text-[22px] font-black">
+                    50 000 Сум
+                </span>
+
+                <button
+                    onclick="addToCart('Дабл Смок Чизбургер', 50000); closeModal('burgerModal')"
+                    class="rounded-xl bg-orange-500 px-6 py-3 font-bold text-white">
+
+                    Добавить
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FRIES MODAL -->
+
+<div
+    id="friesModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 p-5">
+
+    <div
+        class="modal w-full max-w-[500px] rounded-[24px] bg-white p-7 shadow-2xl">
+
+        <div class="flex items-center justify-between">
+
+            <h2 class="text-[24px] font-black">
+                Артисан Фри
+            </h2>
+
+            <button
+                onclick="closeModal('friesModal')"
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-xl">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="friesModalVisual"
+            class="dish-visual mt-5">
+
+            <div class="dish-photo">
+
+                <img
+                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=85"
+                    class="h-[230px] w-full cursor-pointer rounded-2xl object-cover"
+                    alt="Картошка фри"
+                    onclick="toggleFriesModal3D()">
+
+                <button
+                    onclick="toggleFriesModal3D()"
+                    class="dish-3d-button">
+
+                    🧊 Посмотреть в 3D
+
+                </button>
+
+            </div>
+
+
+            <div class="dish-3d">
+
+                <iframe
+                    title="French Fries"
+                    frameborder="0"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; xr-spatial-tracking"
+                    xr-spatial-tracking
+                    execution-while-out-of-viewport
+                    execution-while-not-rendered
+                    web-share
+                    src="https://sketchfab.com/models/c00390a24a3a4c7184fba339c4b13ca6/embed">
+                </iframe>
+
+                <button
+                    onclick="toggleFriesModal3D()"
+                    class="model-back-btn">
+
+                    ← Вернуть фото
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="dish-info">
+
+            <p class="mt-5 text-sm leading-6 text-gray-500">
+
+                Хрустящий картофель с золотистой корочкой
+                и фирменным чесночным дипом.
+
+            </p>
+
+            <div class="mt-6 flex items-center justify-between">
+
+                <span class="text-[22px] font-black">
+                    45 000 Сум
+                </span>
+
+                <button
+                    onclick="addToCart('Артисан Фри', 45000); closeModal('friesModal')"
+                    class="rounded-xl bg-orange-500 px-6 py-3 font-bold text-white">
+
+                    Добавить
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- NUGGETS MODAL -->
+
+<div
+    id="nuggetsModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 p-5">
+
+    <div
+        class="modal w-full max-w-[500px] rounded-[24px] bg-white p-7 shadow-2xl">
+
+        <div class="flex items-center justify-between">
+
+            <h2 class="text-[24px] font-black">
+                Кранч Наггетсы
+            </h2>
+
+            <button
+                onclick="closeModal('nuggetsModal')"
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-xl">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="nuggetsModalVisual"
+            class="dish-visual mt-5">
+
+            <div class="dish-photo">
+
+                <img
+                    src="./Background (1).png"
+                    class="h-[230px] w-full cursor-pointer rounded-2xl object-cover"
+                    alt="Наггетсы"
+                    onclick="toggleNuggetsModal3D()">
+
+                <button
+                    onclick="toggleNuggetsModal3D()"
+                    class="dish-3d-button">
+
+                    🧊 Посмотреть в 3D
+
+                </button>
+
+            </div>
+
+
+            <div class="dish-3d">
+
+                <iframe
+                    title="Chicken McCrispy"
+                    frameborder="0"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; xr-spatial-tracking"
+                    xr-spatial-tracking
+                    execution-while-out-of-viewport
+                    execution-while-not-rendered
+                    web-share
+                    src="https://sketchfab.com/models/adae9027cf8143afba558c8ebfb44ac9/embed">
+                </iframe>
+
+                <button
+                    onclick="toggleNuggetsModal3D()"
+                    class="model-back-btn">
+
+                    ← Вернуть фото
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="dish-info">
+
+            <p class="mt-5 text-sm leading-6 text-gray-500">
+
+                Хрустящие куриные кусочки
+                с двумя фирменными соусами.
+
+            </p>
+
+            <div class="mt-6 flex items-center justify-between">
+
+                <span class="text-[22px] font-black">
+                    65 000 Сум
+                </span>
+
+                <button
+                    onclick="addToCart('Кранч Наггетсы', 65000); closeModal('nuggetsModal')"
+                    class="rounded-xl bg-orange-500 px-6 py-3 font-bold text-white">
+
+                    Добавить
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- DRINK MODAL -->
+
+<div
+    id="drinkModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 p-5">
+
+    <div
+        class="modal w-full max-w-[500px] rounded-[24px] bg-white p-7 shadow-2xl">
+
+        <div class="flex items-center justify-between">
+
+            <h2 class="text-[24px] font-black">
+                Крафт Лимонад
+            </h2>
+
+            <button
+                onclick="closeModal('drinkModal')"
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-xl">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="drinkModalVisual"
+            class="dish-visual mt-5">
+
+            <div class="dish-photo">
+
+                <img
+                    src="./Крафтовый лимонад и кола со льдом.png"
+                    class="h-[230px] w-full cursor-pointer rounded-2xl object-cover"
+                    alt="Лимонад"
+                    onclick="toggleDrinkModal3D()">
+
+                <button
+                    onclick="toggleDrinkModal3D()"
+                    class="dish-3d-button">
+
+                    🧊 Посмотреть в 3D
+
+                </button>
+
+            </div>
+
+
+            <div class="dish-3d">
+
+                <iframe
+                    title="Lime-Lemonade"
+                    frameborder="0"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; xr-spatial-tracking"
+                    xr-spatial-tracking
+                    execution-while-out-of-viewport
+                    execution-while-not-rendered
+                    web-share
+                    src="https://sketchfab.com/models/785bfba600ed449195b8bcd36af01394/embed">
+                </iframe>
+
+                <button
+                    onclick="toggleDrinkModal3D()"
+                    class="model-back-btn">
+
+                    ← Вернуть фото
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="dish-info">
+
+            <p class="mt-5 text-sm leading-6 text-gray-500">
+
+                Натуральный цитрусовый лимонад,
+                лёд и свежая мята.
+
+            </p>
+
+            <div class="mt-6 flex items-center justify-between">
+
+                <span class="text-[22px] font-black">
+                    35 000 Сум
+                </span>
+
+                <button
+                    onclick="addToCart('Крафт Лимонад', 35000); closeModal('drinkModal')"
+                    class="rounded-xl bg-orange-500 px-6 py-3 font-bold text-white">
+
+                    Добавить
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+    let cart = [];
+
+
+    /* =====================================================
+       DYNAMIC TEXT
+    ===================================================== */
+
+    const dynamicTexts = {
+
+        heroDynamicText: [
+
+            {
+                style: "dynamic-style-1",
+                html: `
+                    Настоящий вкус
+                    <br>
+                    <span class="orange-text">
+                        сочного бургера
+                    </span>
+                    на
+                    <br>
+                    открытом огне
+                `
+            },
+
+            {
+                style: "dynamic-style-2",
+                html: `
+                    Больше вкуса
+                    <br>
+                    <span class="orange-text">
+                        в каждом укусе
+                    </span>
+                    без
+                    <br>
+                    лишних слов
+                `
+            },
+
+            {
+                style: "dynamic-style-3",
+                html: `
+                    Голодный?
+                    <br>
+                    <span class="orange-text">
+                        Тогда тебе
+                    </span>
+                    точно
+                    <br>
+                    к нам
+                `
+            },
+
+            {
+                style: "dynamic-style-4",
+                html: `
+                    Жаркий гриль
+                    <br>
+                    <span class="orange-text">
+                        свежие ингредиенты
+                    </span>
+                    и
+                    <br>
+                    максимум вкуса
+                `
+            },
+
+            {
+                style: "dynamic-style-5",
+                html: `
+                    CRAVECRAFT
+                    <br>
+                    <span class="orange-text">
+                        это не просто
+                    </span>
+                    фастфуд
+                    <br>
+                    это характер
+                `
+            }
+
+        ],
+
+
+        menuDynamicText: [
+
+            {
+                style: "dynamic-style-1",
+                html: `
+                    От бургеров до освежающих
+                    <br>
+                    <span class="orange-text">
+                        напитков
+                    </span>
+                `
+            },
+
+            {
+                style: "dynamic-style-2",
+                html: `
+                    Всё самое вкусное
+                    <br>
+                    <span class="orange-text">
+                        в одном меню
+                    </span>
+                `
+            },
+
+            {
+                style: "dynamic-style-3",
+                html: `
+                    Выбирай свой
+                    <br>
+                    <span class="orange-text">
+                        идеальный перекус
+                    </span>
+                `
+            },
+
+            {
+                style: "dynamic-style-4",
+                html: `
+                    Горячие блюда
+                    <br>
+                    <span class="orange-text">
+                        холодные напитки
+                    </span>
+                `
+            },
+
+            {
+                style: "dynamic-style-5",
+                html: `
+                    МЕНЮ CRAVECRAFT
+                    <br>
+                    <span class="orange-text">
+                        ВКУС БЕЗ КОМПРОМИССОВ
+                    </span>
+                `
+            }
+
+        ],
+
+
+        servicesDynamicText: [
+
+            {
+                style: "dynamic-style-1",
+                html: `
+                    Быстро, горячо
+                    <br>
+                    и технологично
+                `
+            },
+
+            {
+                style: "dynamic-style-2",
+                html: `
+                    Сервис,
+                    <br>
+                    <span class="orange-text">
+                        который работает
+                    </span>
+                    для вас
+                `
+            },
+
+            {
+                style: "dynamic-style-3",
+                html: `
+                    Быстрее.
+                    <br>
+                    <span class="orange-text">
+                        Горячее.
+                    </span>
+                    Удобнее.
+                `
+            },
+
+            {
+                style: "dynamic-style-4",
+                html: `
+                    Мы сделали доставку
+                    <br>
+                    <span class="orange-text">
+                        максимально простой
+                    </span>
+                `
+            },
+
+            {
+                style: "dynamic-style-5",
+                html: `
+                    СЕРВИС
+                    <br>
+                    <span class="orange-text">
+                        БЕЗ ЛИШНИХ СЛОВ
+                    </span>
+                `
+            }
+
+        ],
+
+
+        storyDynamicText: [
+
+            {
+                style: "dynamic-style-1",
+                html: `
+                    Мы не просто готовим
+                    фастфуд.
+                    <br>
+                    Мы создаём
+                    <span class="text-orange-500">
+                        гастрономический культ.
+                    </span>
+                `
+            },
+
+            {
+                style: "dynamic-style-2",
+                html: `
+                    Обычный фастфуд?
+                    <br>
+                    <span class="text-orange-500">
+                        Только не CRAVECRAFT.
+                    </span>
+                `
+            },
+
+            {
+                style: "dynamic-style-3",
+                html: `
+                    Еда должна быть
+                    <br>
+                    <span class="text-orange-500">
+                        настоящей.
+                    </span>
+                    Всегда.
+                `
+            },
+
+            {
+                style: "dynamic-style-4",
+                html: `
+                    Мы превращаем
+                    <br>
+                    <span class="text-orange-500">
+                        быстрый перекус
+                    </span>
+                    в событие.
+                `
+            },
+
+            {
+                style: "dynamic-style-5",
+                html: `
+                    CRAVECRAFT
+                    <br>
+                    <span class="text-orange-500">
+                        НЕ ПРОСТО ЕДА.
+                    </span>
+                    <br>
+                    ЭТО ХАРАКТЕР.
+                `
+            }
+
+        ],
+
+
+        contactDynamicText: [
+
+            {
+                style: "dynamic-style-1",
+                html: `
+                    Ждём вас в гости
+                    <br>
+                    или привезём заказ
+                `
+            },
+
+            {
+                style: "dynamic-style-2",
+                html: `
+                    Всегда рады
+                    <br>
+                    <span class="orange-text">
+                        вашим сообщениям
+                    </span>
+                `
+            },
+
+            {
+                style: "dynamic-style-3",
+                html: `
+                    Остались вопросы?
+                    <br>
+                    <span class="orange-text">
+                        Мы на связи!
+                    </span>
+                `
+            },
+
+            {
+                style: "dynamic-style-4",
+                html: `
+                    Хотите заказать?
+                    <br>
+                    <span class="orange-text">
+                        Напишите нам
+                    </span>
+                `
+            },
+
+            {
+                style: "dynamic-style-5",
+                html: `
+                    CRAVECRAFT
+                    <br>
+                    <span class="orange-text">
+                        ВСЕГДА НА СВЯЗИ
+                    </span>
+                `
+            }
+
+        ]
+
+    };
+
+
+    const dynamicIndexes = {
+        heroDynamicText: 0,
+        menuDynamicText: 0,
+        servicesDynamicText: 0,
+        storyDynamicText: 0,
+        contactDynamicText: 0
+    };
+
+
+    const dynamicChanging = {};
+
+
+    function changeDynamicText(id) {
+
+        if (dynamicChanging[id]) {
+            return;
+        }
+
+        const textElement =
+            document.getElementById(id);
+
+        const texts =
+            dynamicTexts[id];
+
+        if (!textElement || !texts) {
+            return;
+        }
+
+        dynamicChanging[id] = true;
+
+        textElement.classList.remove(
+            "dynamic-text-show",
+            "dynamic-text-down"
+        );
+
+        textElement.classList.add(
+            "dynamic-text-up"
+        );
+
+
+        setTimeout(function() {
+
+            dynamicIndexes[id]++;
+
+            if (
+                dynamicIndexes[id] >=
+                texts.length
+            ) {
+
+                dynamicIndexes[id] = 0;
+
+            }
+
+            const next =
+                texts[dynamicIndexes[id]];
+
+
+            textElement.innerHTML =
+                next.html;
+
+
+            textElement.classList.remove(
+                "dynamic-style-1",
+                "dynamic-style-2",
+                "dynamic-style-3",
+                "dynamic-style-4",
+                "dynamic-style-5"
+            );
+
+
+            textElement.classList.add(
+                next.style
+            );
+
+
+            textElement.classList.remove(
+                "dynamic-text-up"
+            );
+
+            textElement.classList.add(
+                "dynamic-text-down"
+            );
+
+
+            setTimeout(function() {
+
+                textElement.classList.remove(
+                    "dynamic-text-down"
+                );
+
+                textElement.classList.add(
+                    "dynamic-text-show"
+                );
+
+
+                setTimeout(function() {
+
+                    dynamicChanging[id] =
+                        false;
+
+                }, 700);
+
+            }, 50);
+
+
+        }, 700);
+
+    }
+
+
+    /* =====================================================
+       3D HERO
+    ===================================================== */
+
+    let hero3DActive = false;
+
+
+    function toggleHero3D() {
+
+        const photo =
+            document.getElementById("heroPhoto");
+
+        const model =
+            document.getElementById("hero3D");
+
+
+        hero3DActive =
+            !hero3DActive;
+
+
+        if (hero3DActive) {
+
+            photo.classList.add("hidden-3d");
+
+            model.classList.remove("hidden-3d");
+
+        } else {
+
+            model.classList.add("hidden-3d");
+
+            photo.classList.remove("hidden-3d");
+
+        }
+
+    }
+
+
+    /* =====================================================
+       3D BURGER CARD
+    ===================================================== */
+
+    let burgerCard3DActive = false;
+
+
+    function toggleBurgerCard3D() {
+
+        const photo =
+            document.getElementById("burgerCardPhoto");
+
+        const model =
+            document.getElementById("burgerCard3D");
+
+
+        burgerCard3DActive =
+            !burgerCard3DActive;
+
+
+        if (burgerCard3DActive) {
+
+            photo.classList.add("hidden-3d");
+
+            model.classList.remove("hidden-3d");
+
+        } else {
+
+            model.classList.add("hidden-3d");
+
+            photo.classList.remove("hidden-3d");
+
+        }
+
+    }
+
+
+    /* =====================================================
+       3D FRIES CARD
+    ===================================================== */
+
+    let friesCard3DActive = false;
+
+
+    function toggleFriesCard3D() {
+
+        const photo =
+            document.getElementById("friesCardPhoto");
+
+        const model =
+            document.getElementById("friesCard3D");
+
+
+        friesCard3DActive =
+            !friesCard3DActive;
+
+
+        if (friesCard3DActive) {
+
+            photo.classList.add("hidden-3d");
+
+            model.classList.remove("hidden-3d");
+
+        } else {
+
+            model.classList.add("hidden-3d");
+
+            photo.classList.remove("hidden-3d");
+
+        }
+
+    }
+
+
+    /* =====================================================
+       3D NUGGETS CARD
+    ===================================================== */
+
+    let nuggetsCard3DActive = false;
+
+
+    function toggleNuggetsCard3D() {
+
+        const photo =
+            document.getElementById("nuggetsCardPhoto");
+
+        const model =
+            document.getElementById("nuggetsCard3D");
+
+
+        nuggetsCard3DActive =
+            !nuggetsCard3DActive;
+
+
+        if (nuggetsCard3DActive) {
+
+            photo.classList.add("hidden-3d");
+
+            model.classList.remove("hidden-3d");
+
+        } else {
+
+            model.classList.add("hidden-3d");
+
+            photo.classList.remove("hidden-3d");
+
+        }
+
+    }
+
+
+    /* =====================================================
+       3D DRINK CARD
+    ===================================================== */
+
+    let drinkCard3DActive = false;
+
+
+    function toggleDrinkCard3D() {
+
+        const photo =
+            document.getElementById("drinkCardPhoto");
+
+        const model =
+            document.getElementById("drinkCard3D");
+
+
+        drinkCard3DActive =
+            !drinkCard3DActive;
+
+
+        if (drinkCard3DActive) {
+
+            photo.classList.add("hidden-3d");
+
+            model.classList.remove("hidden-3d");
+
+        } else {
+
+            model.classList.add("hidden-3d");
+
+            photo.classList.remove("hidden-3d");
+
+        }
+
+    }
+
+
+    /* =====================================================
+       BURGER MODAL 3D
+    ===================================================== */
+
+    let burgerModal3DActive = false;
+
+
+    function toggleBurgerModal3D() {
+
+        const visual =
+            document.getElementById(
+                "burgerModalVisual"
+            );
+
+
+        burgerModal3DActive =
+            !burgerModal3DActive;
+
+
+        if (burgerModal3DActive) {
+
+            visual.classList.add(
+                "dish-modal-3d-active"
+            );
+
+        } else {
+
+            visual.classList.remove(
+                "dish-modal-3d-active"
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       FRIES MODAL 3D
+    ===================================================== */
+
+    let friesModal3DActive = false;
+
+
+    function toggleFriesModal3D() {
+
+        const visual =
+            document.getElementById(
+                "friesModalVisual"
+            );
+
+
+        friesModal3DActive =
+            !friesModal3DActive;
+
+
+        if (friesModal3DActive) {
+
+            visual.classList.add(
+                "dish-modal-3d-active"
+            );
+
+        } else {
+
+            visual.classList.remove(
+                "dish-modal-3d-active"
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       NUGGETS MODAL 3D
+    ===================================================== */
+
+    let nuggetsModal3DActive = false;
+
+
+    function toggleNuggetsModal3D() {
+
+        const visual =
+            document.getElementById(
+                "nuggetsModalVisual"
+            );
+
+
+        nuggetsModal3DActive =
+            !nuggetsModal3DActive;
+
+
+        if (nuggetsModal3DActive) {
+
+            visual.classList.add(
+                "dish-modal-3d-active"
+            );
+
+        } else {
+
+            visual.classList.remove(
+                "dish-modal-3d-active"
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       DRINK MODAL 3D
+    ===================================================== */
+
+    let drinkModal3DActive = false;
+
+
+    function toggleDrinkModal3D() {
+
+        const visual =
+            document.getElementById(
+                "drinkModalVisual"
+            );
+
+
+        drinkModal3DActive =
+            !drinkModal3DActive;
+
+
+        if (drinkModal3DActive) {
+
+            visual.classList.add(
+                "dish-modal-3d-active"
+            );
+
+        } else {
+
+            visual.classList.remove(
+                "dish-modal-3d-active"
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       MODALS
+    ===================================================== */
+
+    function openModal(id) {
+
+        const modal =
+            document.getElementById(id);
+
+        if (!modal) {
+            return;
+        }
+
+        modal.classList.remove("hidden");
+
+        modal.classList.add("flex");
+
+        document.body.classList.add(
+            "overflow-hidden"
+        );
+
+    }
+
+
+    function closeModal(id) {
+
+        const modal =
+            document.getElementById(id);
+
+        if (!modal) {
+            return;
+        }
+
+
+        modal.classList.add("hidden");
+
+        modal.classList.remove("flex");
+
+        document.body.classList.remove(
+            "overflow-hidden"
+        );
+
+
+        if (id === "burgerModal") {
+
+            burgerModal3DActive = false;
+
+            const visual =
+                document.getElementById(
+                    "burgerModalVisual"
+                );
+
+            if (visual) {
+
+                visual.classList.remove(
+                    "dish-modal-3d-active"
+                );
+
+            }
+
+        }
+
+
+        if (id === "friesModal") {
+
+            friesModal3DActive = false;
+
+            const visual =
+                document.getElementById(
+                    "friesModalVisual"
+                );
+
+            if (visual) {
+
+                visual.classList.remove(
+                    "dish-modal-3d-active"
+                );
+
+            }
+
+        }
+
+
+        if (id === "nuggetsModal") {
+
+            nuggetsModal3DActive = false;
+
+            const visual =
+                document.getElementById(
+                    "nuggetsModalVisual"
+                );
+
+            if (visual) {
+
+                visual.classList.remove(
+                    "dish-modal-3d-active"
+                );
+
+            }
+
+        }
+
+
+        if (id === "drinkModal") {
+
+            drinkModal3DActive = false;
+
+            const visual =
+                document.getElementById(
+                    "drinkModalVisual"
+                );
+
+            if (visual) {
+
+                visual.classList.remove(
+                    "dish-modal-3d-active"
+                );
+
+            }
+
+        }
+
+    }
+
+
+    function openDish(id) {
+
+        openModal(id);
+
+    }
+
+
+    /* =====================================================
+       CART
+    ===================================================== */
+
+    function addToCart(name, price) {
+
+        cart.push({
+            name: name,
+            price: price
+        });
+
+        updateCart();
+
+        alert(
+            name + " добавлен в корзину!"
+        );
+
+    }
+
+
+    function updateCart() {
+
+        const count =
+            cart.length;
+
+
+        document.getElementById(
+            "heroCartCount"
+        ).textContent = count;
+
+
+        const content =
+            document.getElementById(
+                "cartContent"
+            );
+
+
+        if (count === 0) {
+
+            content.innerHTML = `
+
+                <div class="rounded-xl bg-gray-50 p-6 text-center">
+
+                    <div class="text-4xl">
+                        🛒
+                    </div>
+
+                    <p class="mt-3 font-bold">
+                        Корзина пуста
+                    </p>
+
+                    <p class="mt-1 text-sm text-gray-400">
+                        Добавьте что-нибудь вкусное!
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        let total = 0;
+
+
+        let html = `
+
+            <div class="space-y-3">
+
+        `;
+
+
+        cart.forEach(
+            function(item, index) {
+
+                total += item.price;
+
+
+                html += `
+
+                    <div class="flex items-center justify-between rounded-xl border border-gray-200 p-4">
+
+                        <div>
+
+                            <p class="font-bold">
+                                ${item.name}
+                            </p>
+
+                            <p class="mt-1 text-sm text-gray-400">
+                                ${item.price.toLocaleString("ru-RU")} Сум
+                            </p>
+
+                        </div>
+
+                        <button
+                            onclick="removeFromCart(${index})"
+                            class="text-xl text-red-500">
+
+                            ×
+
+                        </button>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+
+        html += `
+
+            </div>
+
+            <div class="mt-6 flex items-center justify-between border-t pt-5">
+
+                <span class="font-bold">
+                    Итого:
+                </span>
+
+                <span class="text-xl font-black">
+
+                    ${total.toLocaleString("ru-RU")} Сум
+
+                </span>
+
+            </div>
+
+            <button
+                onclick="checkout()"
+                class="mt-5 w-full rounded-xl bg-orange-500 py-4 font-bold text-white hover:bg-orange-600">
+
+                Оформить заказ
+
+            </button>
+
+        `;
+
+
+        content.innerHTML =
+            html;
+
+    }
+
+
+    function removeFromCart(index) {
+
+        cart.splice(index, 1);
+
+        updateCart();
+
+    }
+
+
+    function checkout() {
+
+        if (cart.length === 0) {
+
+            alert(
+                "Корзина пуста!"
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "Заказ принят! Спасибо за выбор CRAVECRAFT 🔥"
+        );
+
+
+        cart = [];
+
+        updateCart();
+
+        closeModal(
+            "cartModal"
+        );
+
+    }
+
+
+    /* =====================================================
+       LOGIN
+    ===================================================== */
+
+    function login(event) {
+
+        event.preventDefault();
+
+        alert(
+            "Вы успешно вошли в аккаунт!"
+        );
+
+        closeModal(
+            "loginModal"
+        );
+
+    }
+
+
+    function forgotPassword() {
+
+        alert(
+            "Ссылка для восстановления пароля будет отправлена на вашу почту."
+        );
+
+    }
+
+
+    function googleLogin() {
+
+        alert(
+            "Авторизация через Google будет доступна после подключения Google OAuth."
+        );
+
+    }
+
+
+    /* =====================================================
+       CONTACT FORM
+    ===================================================== */
+
+    function sendMessage(event) {
+
+        event.preventDefault();
+
+        alert(
+            "Сообщение успешно отправлено!"
+        );
+
+        event.target.reset();
+
+    }
+
+
+    /* =====================================================
+       CLICK OUTSIDE
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        function(event) {
+
+            const modals = [
+
+                "loginModal",
+                "cartModal",
+                "burgerModal",
+                "friesModal",
+                "nuggetsModal",
+                "drinkModal"
+
+            ];
+
+
+            modals.forEach(
+                function(id) {
+
+                    const modal =
+                        document.getElementById(id);
+
+
+                    if (
+                        modal &&
+                        event.target === modal
+                    ) {
+
+                        closeModal(id);
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       ESC
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key !== "Escape"
+            ) {
+                return;
+            }
+
+
+            const modals = [
+
+                "loginModal",
+                "cartModal",
+                "burgerModal",
+                "friesModal",
+                "nuggetsModal",
+                "drinkModal"
+
+            ];
+
+
+            modals.forEach(
+                function(id) {
+
+                    const modal =
+                        document.getElementById(id);
+
+
+                    if (
+                        modal &&
+                        !modal.classList.contains(
+                            "hidden"
+                        )
+                    ) {
+
+                        closeModal(id);
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+</script>
+
+```html
+<!-- ========================================= -->
+<!-- BURGER CURSOR -->
+<!-- ========================================= -->
+
+<div id="burgerCursor">
+    <div class="burger-top"></div>
+    <div class="burger-cheese"></div>
+    <div class="burger-meat"></div>
+    <div class="burger-bottom"></div>
+</div>
+
+<!-- AFK MESSAGE -->
+<div id="cursorMessage"></div>
+
+
+<style>
+
+/* =============================== */
+/* HIDE DEFAULT CURSOR */
+/* =============================== */
+
+html,
+body,
+*,
+a,
+button,
+input,
+textarea,
+select {
+    cursor: none !important;
+}
+
+
+/* =============================== */
+/* BURGER */
+/* =============================== */
+
+#burgerCursor {
+    position: fixed;
+    width: 34px;
+    height: 30px;
+
+    pointer-events: none;
+    z-index: 999999;
+
+    transform: translate(-5px, -5px);
+
+    filter:
+        drop-shadow(0 0 7px #ff8c00)
+        drop-shadow(0 0 14px rgba(255,140,0,.6));
+}
+
+
+/* TOP */
+
+.burger-top {
+    position: absolute;
+
+    width: 30px;
+    height: 13px;
+
+    top: 0;
+    left: 2px;
+
+    background: linear-gradient(
+        135deg,
+        #ffb347,
+        #e87516
+    );
+
+    border-radius: 18px 18px 5px 5px;
+}
+
+
+/* SESAME */
+
+.burger-top::before {
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+    height: 2px;
+
+    top: 4px;
+    left: 7px;
+
+    background: #fff1c1;
+
+    border-radius: 50%;
+
+    box-shadow:
+        8px 2px #fff1c1,
+        15px -1px #fff1c1,
+        20px 3px #fff1c1;
+}
+
+
+/* CHEESE */
+
+.burger-cheese {
+    position: absolute;
+
+    width: 32px;
+    height: 5px;
+
+    top: 12px;
+    left: 1px;
+
+    background: #ffc400;
+
+    border-radius: 2px;
+}
+
+
+/* MEAT */
+
+.burger-meat {
+    position: absolute;
+
+    width: 31px;
+    height: 7px;
+
+    top: 16px;
+    left: 2px;
+
+    background: #3a2117;
+
+    border-radius: 3px;
+}
+
+
+/* BOTTOM */
+
+.burger-bottom {
+    position: absolute;
+
+    width: 29px;
+    height: 6px;
+
+    top: 23px;
+    left: 3px;
+
+    background: #d9791c;
+
+    border-radius: 2px 2px 8px 8px;
+}
+
+
+/* =============================== */
+/* ✨ SPARKLES */
+/* =============================== */
+
+.sparkle {
+    position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    pointer-events: none;
+
+    z-index: 999998;
+
+    background: #ffb000;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 5px #ff8c00,
+        0 0 10px #ff8c00;
+
+    animation: sparkleFade 700ms ease-out forwards;
+}
+
+
+@keyframes sparkleFade {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            scale(0)
+            translateY(15px)
+            rotate(180deg);
+    }
+}
+
+
+/* =============================== */
+/* AFK MESSAGE */
+/* =============================== */
+
+#cursorMessage {
+    position: fixed;
+
+    z-index: 1000000;
+
+    pointer-events: none;
+
+    max-width: 260px;
+
+    padding: 8px 13px;
+
+    background: white;
+
+    color: #151923;
+
+    border-radius:
+        12px 12px 12px 3px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 0 15px rgba(255,140,0,.35),
+        0 5px 20px rgba(0,0,0,.15);
+
+    opacity: 0;
+
+    transform:
+        translate(15px,15px)
+        scale(.8);
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+}
+
+
+#cursorMessage.show {
+    opacity: 1;
+
+    transform:
+        translate(15px,15px)
+        scale(1);
+}
+
+</style>
+
+
+<script>
+
+/* =============================== */
+/* CURSOR */
+/* =============================== */
+
+const burgerCursor =
+    document.getElementById("burgerCursor");
+
+const cursorMessage =
+    document.getElementById("cursorMessage");
+
+
+/* =============================== */
+/* POSITION */
+/* =============================== */
+
+let cursorX = 0;
+let cursorY = 0;
+
+
+/* =============================== */
+/* AFK */
+/* =============================== */
+
+let afkTimer;
+let messageTimer;
+
+let messageIndex = 0;
+
+
+/* =============================== */
+/* MESSAGES */
+/* =============================== */
+
+const cursorMessages = [
+
+    "Только не говори 67 🤡",
+
+    "Эй... ты ещё здесь? 👀",
+
+    "Может, заглянем в меню? 🍟",
+
+    "Ты так долго думаешь... 😭",
+
+    "Бургер уже ждёт тебя 🍔",
+
+    "Ну что, будем заказывать? 😏",
+
+    "Кажется, ты AFK 😴",
+
+    "Я всё ещё тут 👀",
+
+    "Может, чего-нибудь вкусного? 🔥",
+
+    "Ты точно ничего не хочешь? 🤨",
+
+    "CRAVECRAFT ждёт тебя 😎",
+
+    "Может, закажем что-нибудь? 🍔"
+
+];
+
+
+/* =============================== */
+/* MOUSE MOVE */
+/* =============================== */
+
+document.addEventListener(
+    "mousemove",
+    function(e) {
+
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+
+
+        /* MOVE BURGER */
+
+        burgerCursor.style.left =
+            cursorX + "px";
+
+        burgerCursor.style.top =
+            cursorY + "px";
+
+
+        /* MOVE MESSAGE */
+
+        cursorMessage.style.left =
+            cursorX + "px";
+
+        cursorMessage.style.top =
+            cursorY + "px";
+
+
+        /* ======================= */
+        /* ✨ CREATE SPARKLE */
+        /* ======================= */
+
+        const sparkle =
+            document.createElement("div");
+
+        sparkle.className = "sparkle";
+
+
+        /* RANDOM POSITION */
+
+        sparkle.style.left =
+            (
+                cursorX +
+                Math.random() * 14 -
+                7
+            ) + "px";
+
+        sparkle.style.top =
+            (
+                cursorY +
+                Math.random() * 14 -
+                7
+            ) + "px";
+
+
+        /* RANDOM SIZE */
+
+        const size =
+            Math.random() * 4 + 3;
+
+        sparkle.style.width =
+            size + "px";
+
+        sparkle.style.height =
+            size + "px";
+
+
+        /* ADD TO PAGE */
+
+        document.body.appendChild(sparkle);
+
+
+        /* DELETE AFTER ANIMATION */
+
+        setTimeout(
+            function() {
+                sparkle.remove();
+            },
+            700
+        );
+
+
+        /* ======================= */
+        /* RESET AFK */
+        /* ======================= */
+
+        cursorMessage.classList.remove("show");
+
+        clearTimeout(afkTimer);
+
+        clearInterval(messageTimer);
+
+
+        afkTimer =
+            setTimeout(
+                startAFK,
+                5000
+            );
+    }
+);
+
+
+/* =============================== */
+/* START AFK */
+/* =============================== */
+
+function startAFK() {
+
+    showMessage();
+
+
+    messageTimer =
+        setInterval(
+            function() {
+
+                showMessage();
+
+            },
+            5000
+        );
+}
+
+
+/* =============================== */
+/* SHOW MESSAGE */
+/* =============================== */
+
+function showMessage() {
+
+    cursorMessage.classList.remove("show");
+
+
+    setTimeout(
+        function() {
+
+            cursorMessage.textContent =
+                cursorMessages[messageIndex];
+
+
+            messageIndex++;
+
+
+            if (
+                messageIndex >=
+                cursorMessages.length
+            ) {
+
+                messageIndex = 0;
+
+            }
+
+
+            cursorMessage.style.left =
+                cursorX + "px";
+
+            cursorMessage.style.top =
+                cursorY + "px";
+
+
+            cursorMessage.classList.add("show");
+
+        },
+        150
+    );
+}
+
+
+/* =============================== */
+/* CLICK RESET */
+/* =============================== */
+
+document.addEventListener(
+    "mousedown",
+    function() {
+
+        cursorMessage.classList.remove("show");
+
+        clearTimeout(afkTimer);
+
+        clearInterval(messageTimer);
+
+
+        afkTimer =
+            setTimeout(
+                startAFK,
+                5000
+            );
+    }
+);
+
+
+/* =============================== */
+/* KEYBOARD RESET */
+/* =============================== */
+
+document.addEventListener(
+    "keydown",
+    function() {
+
+        cursorMessage.classList.remove("show");
+
+        clearTimeout(afkTimer);
+
+        clearInterval(messageTimer);
+
+
+        afkTimer =
+            setTimeout(
+                startAFK,
+                5000
+            );
+    }
+);
+
+
+/* =============================== */
+/* INITIAL AFK TIMER */
+/* =============================== */
+
+afkTimer =
+    setTimeout(
+        startAFK,
+        5000
+    );
+
+</script>
+
+
+
+
+
+</body>
+
+</html>
